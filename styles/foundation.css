@@ -1,0 +1,40 @@
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--accent) 25%, white);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-foreground tracking-tight;
+  }
+
+  a {
+    @apply text-accent transition-colors;
+  }
+
+  a:hover {
+    opacity: 0.8;
+  }
+
+  code {
+    @apply bg-surface rounded-md px-1.5 py-0.5;
+  }
+
+  pre {
+    @apply bg-surface border border-border rounded-2xl;
+  }
+}

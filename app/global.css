@@ -1,7 +1,12 @@
-@import 'tailwindcss';
-@import 'fumadocs-ui/css/neutral.css';
-@import 'fumadocs-ui/css/preset.css';
+@import "tailwindcss";
+@import "fumadocs-ui/css/neutral.css";
+@import "fumadocs-ui/css/preset.css";
+@import "@heroui/styles";
 
+@import "../styles/tokens.css";
+@import "../styles/foundation.css";
+@import "../styles/themes/light.css";
+@import "../styles/themes/dark.css";
 html {
   scrollbar-gutter: stable;
 }
@@ -9,4 +14,16 @@ html {
 html > body[data-scroll-locked] {
   margin-right: 0px !important;
   --removed-body-scroll-bar-size: 0px !important;
+}
+
+@utility grid-pattern {
+  background-size: 40px 40px;
+
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+}
+
+@utility curved-bottom {
+  clip-path: circle(72% at 50% 160%);
 }
