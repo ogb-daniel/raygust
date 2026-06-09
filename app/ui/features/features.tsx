@@ -1,9 +1,9 @@
 import {
   CloudArrowUpIn,
-  SquareDashedLetterT,
-  CurlyBrackets,
-  Gear,
-  CircleLetterI,
+  Thunderbolt,
+  FileCode,
+  Display,
+  ClockArrowRotateLeft,
 } from "@gravity-ui/icons";
 import FeatureCard from "./feature-card";
 import {
@@ -19,33 +19,33 @@ import clsx from "clsx";
 const features = [
   {
     icon: <CloudArrowUpIn />,
-    title: "Upload everything at once",
+    title: "Upload any document",
     description:
-      "No batching, no limits, no waiting. Raygust supports larger files compared to others",
+      "PDF, Markdown, or plain text. We automatically break it down and make it searchable.",
     illustration: <UploadIllustration />,
   },
   {
-    icon: <SquareDashedLetterT />,
-    title: "Start in seconds, not hours",
-    description: "Turn your data into clear visuals that explain your findings",
+    icon: <Thunderbolt />,
+    title: "Answers in seconds",
+    description:
+      "Ask a question in plain English and get precise answers pulled directly from your uploaded files.",
     illustration: <StripeIllustration />,
   },
   {
-    icon: <CurlyBrackets />,
-    title: "Code when you want to",
-    description: "Switch to R, Python, or SQL anytime for advanced work",
+    icon: <FileCode />,
+    title: "Integrate into your application",
+    description: "Switch between Python or Typescript",
     illustration: <CodeIllustration />,
   },
   {
-    icon: <Gear />,
-    title: "Tackle problems generic AI can't",
-    description:
-      "Built with advanced capabilities to solve complex data analysis problems",
+    icon: <Display />,
+    title: "Chat playground",
+    description: "Chat with your documents. No code required.",
     illustration: <ModelsIllustration />,
     wide: true,
   },
   {
-    icon: <CircleLetterI />,
+    icon: <ClockArrowRotateLeft />,
     title: "Skip repetitive explanations",
     description:
       "Raygust remembers your context and preferences to work faster over time",

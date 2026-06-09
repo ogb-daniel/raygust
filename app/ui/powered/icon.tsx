@@ -1,10 +1,9 @@
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
 
 interface IconProps {
-  src: StaticImport | string;
+  src: string;
   alt?: string;
-  symbol?: StaticImport | string;
+  symbol?: string;
 }
 
 export default function Icon({ src, alt = "", symbol }: IconProps) {

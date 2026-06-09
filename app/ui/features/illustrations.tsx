@@ -2,36 +2,12 @@ import styles from "./features.module.css";
 
 /* ---- Upload Illustration ---- */
 export function UploadIllustration() {
-  return (
-    <div className={styles.uploadVisual}>
-      <div className={styles.uploadCard}>
-        <div className={styles.uploadThumbnail} />
-        <span>Upload</span>
-      </div>
-      <div className={styles.uploadCard}>
-        <div className={styles.uploadThumbnailAlt} />
-      </div>
-    </div>
-  );
+  return <div className={styles.uploadVisual}></div>;
 }
 
 /* ---- Stripe / Speed Illustration ---- */
 export function StripeIllustration() {
-  const widths = [90, 110, 130, 115, 95, 120, 100, 85, 125, 105, 88, 118];
-  return (
-    <div className={styles.stripeVisual}>
-      {widths.map((w, i) => (
-        <div
-          key={i}
-          className={styles.stripeLine}
-          style={{
-            width: `${w}px`,
-            opacity: 0.3 + (i / widths.length) * 0.5,
-          }}
-        />
-      ))}
-    </div>
-  );
+  return <div></div>;
 }
 
 /* ---- Code Illustration ---- */
@@ -41,34 +17,44 @@ export function CodeIllustration() {
       <div className={styles.codeHeader}>
         <span className={styles.codeBadge}>Upload</span>
       </div>
+
+      <div className={styles.codeLine}>
+        <span className={styles.codeKeyword}>{"import "}</span>
+        <span className={styles.codePunct}>{"{ "}</span>
+        <span className={styles.codeType}>{"RaygustClient"}</span>
+        <span className={styles.codePunct}>{" } "}</span>
+        <span className={styles.codeKeyword}>{"from "}</span>
+        <span className={styles.codeString}>{"'@raygust/sdk'"}</span>
+        <span className={styles.codePunct}>{";"}</span>
+      </div>
       <div className={styles.codeLine}>
         <span className={styles.codeKeyword}>{"const "}</span>
-        <span className={styles.codeFn}>{"GetStatus"}</span>
+        <span className={styles.codeFn}>{"client"}</span>
+        <span className={styles.codePunct}>{" = "}</span>
+        <span className={styles.codeKeyword}>{"new "}</span>
+        <span className={styles.codeType}>{"RaygustClient"}</span>
+        <span className={styles.codePunct}>{"({ "}</span>
+        <span className={styles.codeFn}>{"apiKey"}</span>
+        <span className={styles.codePunct}>{": "}</span>
+        <span className={styles.codeString}>{"'rag_abc123'"}</span>
+        <span className={styles.codePunct}>{" });"}</span>
+      </div>
+      <div className={styles.codeLine}>
+        <span className={styles.codeComment}>{"// Documents"}</span>
+      </div>
+      <div className={styles.codeLine}>
+        <span className={styles.codeKeyword}>{"const "}</span>
+        <span className={styles.codeFn}>{"doc"}</span>
+        <span className={styles.codePunct}>{" = "}</span>
+        <span className={styles.codeKeyword}>{"await "}</span>
+        <span className={styles.codeFn}>{"client"}</span>
+        <span className={styles.codePunct}>{"."}</span>
+        <span className={styles.codeFn}>{"documents"}</span>
+        <span className={styles.codePunct}>{"."}</span>
+        <span className={styles.codeFn}>{"upload"}</span>
         <span className={styles.codePunct}>{"("}</span>
-        <span className={styles.codeType}>{"Scanner"}</span>
-        <span className={styles.codePunct}>{": "}</span>
-        <span className={styles.codeType}>{"String"}</span>
-        <span className={styles.codePunct}>{")"}</span>
-      </div>
-      <div className={styles.codeLine}>
-        <span className={styles.codePunct}>{"  "}</span>
-        <span className={styles.codeKeyword}>{"Params"}</span>
-        <span className={styles.codePunct}>{": "}</span>
-        <span className={styles.codeString}>{"String("}</span>
-      </div>
-      <div className={styles.codeLine}>
-        <span className={styles.codePunct}>{"    "}</span>
-        <span className={styles.codeFn}>{"TransferKey"}</span>
-        <span className={styles.codePunct}>{": "}</span>
-        <span className={styles.codeType}>{"OPEN"}</span>
-        <span className={styles.codePunct}>{","}</span>
-      </div>
-      <div className={styles.codeLine}>
-        <span className={styles.codePunct}>{"    "}</span>
-        <span className={styles.codeFn}>{"Connection"}</span>
-        <span className={styles.codePunct}>{": "}</span>
-        <span className={styles.codeNum}>{"1024"}</span>
-        <span className={styles.codePunct}>{")"}</span>
+        <span className={styles.codeFn}>{"file"}</span>
+        <span className={styles.codePunct}>{");"}</span>
       </div>
     </div>
   );

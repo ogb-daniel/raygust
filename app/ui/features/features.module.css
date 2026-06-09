@@ -102,7 +102,6 @@
 .illustration {
   position: relative;
   height: 200px;
-  padding: 1.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -131,7 +130,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: color-mix(in oklab, var(--accent) 10%, white);
   color: var(--accent);
   margin-bottom: 0.25rem;
 }
@@ -255,22 +253,42 @@
 
 /* Stripe pattern illustration */
 .stripeVisual {
+  position: relative;
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  gap: 3px;
-  transform: rotate(-12deg) scale(1.2);
+  align-items: center;
+  justify-content: center;
 }
 
-.stripeLine {
-  height: 4px;
-  border-radius: 2px;
-  background: var(--accent);
-  opacity: 0.75;
+.stripeBolt {
+  position: absolute;
+  top: 10px;
+  width: 200px;
+  height: 280px;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--accent) 0px,
+    var(--accent) 4px,
+    transparent 4px,
+    transparent 9px
+  );
+  clip-path: polygon(
+    50% 0%,
+    65% 0%,
+    68% 5%,
+    55% 38%,
+    75% 38%,
+    35% 100%,
+    42% 55%,
+    25% 55%
+  );
   transition: transform 0.4s ease;
 }
 
-.card:hover .stripeLine {
-  transform: scaleX(1.05);
+.card:hover .stripeBolt,
+.cardWide:hover .stripeBolt {
+  transform: scale(1.05);
 }
 
 /* Models illustration */
