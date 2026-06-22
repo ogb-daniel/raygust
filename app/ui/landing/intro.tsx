@@ -14,11 +14,11 @@ export default function Intro() {
       </p>
       <div className="flex items-center gap-4 mt-8">
         <Button
-          className="rounded-2xl px-4 py-6 border-2 font-semibold border-gray-300"
           variant="outline"
+          className=" inline-flex items-center justify-center gap-2 px-4 py-6 text-sm font-semibold text-gray-900  border-gray-200 rounded-2xl border-2 hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm"
         >
-          Install SDK{" "}
-          <div className="rounded-lg px-3 border-gray-200 py-1 border-2 backdrop-blur-md  ">
+          Install SDK
+          <div className="rounded-lg px-3 py-1 border-2 backdrop-blur-md  border-gray-100">
             <ArrowRight className="" />
           </div>
         </Button>
