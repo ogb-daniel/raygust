@@ -57,7 +57,7 @@ const features = [
 export default function Features() {
   return (
     <section className={clsx(styles.section, "")}>
-      <span className={styles.badge}>Key Features</span>
+      <span className="section-header">Key Features</span>
       <h2 className={styles.heading}>Intuitive and easy to use</h2>
       <div className={styles.grid}>
         {features.map((feature) => (

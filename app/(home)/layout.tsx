@@ -10,7 +10,7 @@ export default function Layout({ children }: LayoutProps<"/">) {
       <div className="absolute inset-0 bg-linear-to-b from-white "></div>
       <div className="relative z-10  ">
         <Navbar />
-        <section className="px-20">{children}</section>
+        <section className="px-28">{children}</section>
       </div>
     </main>
   );

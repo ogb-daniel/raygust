@@ -14,18 +14,18 @@ export default function Intro() {
       </p>
       <div className="flex items-center gap-4 mt-8">
         <Button
-          className="rounded-2xl px-4 py-7 border-2 font-semibold"
+          className="rounded-2xl px-4 py-6 border-2 font-semibold border-gray-300"
           variant="outline"
         >
           Install SDK{" "}
-          <div className="rounded-lg px-3 py-2 border-2 backdrop-blur-md border-border/40 ">
+          <div className="rounded-lg px-3 border-gray-200 py-1 border-2 backdrop-blur-md  ">
             <ArrowRight className="" />
           </div>
         </Button>
 
-        <Button className="rounded-2xl font-semibold px-4 py-7 shadow-[inset_0_2px_1px_rgba(255,255,255,0.4),inset_2px_0_1px_rgba(255,255,255,0.3),inset_-2px_0_1px_rgba(255,255,255,0.3)]">
+        <Button className="rounded-2xl font-semibold px-4 py-6 shadow-[inset_0_2px_1px_rgba(255,255,255,0.4),inset_2px_0_1px_rgba(255,255,255,0.3),inset_-2px_0_1px_rgba(255,255,255,0.3)]">
           Get Started
-          <div className="rounded-lg px-3 py-2 shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)]  bg-white/10 backdrop-blur-md border-white/20">
+          <div className="rounded-lg px-3 py-1 shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)]  bg-white/10 backdrop-blur-md border-white/20">
             <ArrowRight className="" />
           </div>
         </Button>
