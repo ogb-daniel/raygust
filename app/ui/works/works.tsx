@@ -31,7 +31,7 @@ export default function Works() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-6">
             <div className="flex flex-col gap-4">
-              <div className="w-10 h-10 flex items-center justify-center rounded-xl bg-orange-50 border border-orange-100 text-[#FF6B35]">
+              <div className="w-10 h-10 flex items-center justify-center rounded-xl bg-accent-soft border border-accent-soft text-accent">
                 <BarChart3 className="w-5 h-5" />
               </div>
               <div>
@@ -46,7 +46,7 @@ export default function Works() {
             </div>
 
             <div className="flex flex-col gap-4">
-              <div className="w-10 h-10 flex items-center justify-center rounded-xl bg-orange-50 border border-orange-100 text-[#FF6B35]">
+              <div className="w-10 h-10 flex items-center justify-center rounded-xl bg-accent-soft border border-accent-soft text-accent">
                 <Settings className="w-5 h-5" />
               </div>
               <div>
