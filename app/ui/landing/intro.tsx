@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 export default function Intro() {
   return (
     <section className="flex flex-col justify-center items-center text-center mt-[-100px] flex-1 min-h-screen px-28">
-      <p className="uppercase rounded-2xl shadow w-fit py-2 px-3 flex items-center gap-4">
+      <p className="uppercase rounded-2xl shadow w-fit py-2 px-3 flex items-center gap-4 section-header">
         Meet Raygust: For businesses and developers
         <ArrowRight className="text-accent" />
       </p>

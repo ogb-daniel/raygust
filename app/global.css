@@ -35,6 +35,13 @@ html > body[data-scroll-locked] {
   clip-path: circle(72% at 50% 160%);
 }
 
+@utility stroked-text {
+  -webkit-text-fill-color: color-mix(in srgb, var(--accent) 30%, transparent);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--accent);
+  paint-order: stroke fill;
+}
+
 .section-header {
   @apply px-3 py-1 text-xs font-bold tracking-widest text-gray-500 uppercase bg-gray-50 border border-gray-200 rounded-full;
 }

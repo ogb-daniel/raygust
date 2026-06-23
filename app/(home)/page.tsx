@@ -6,6 +6,7 @@ import BuiltFor from "../ui/built-for/built-for";
 import Pricing from "../ui/pricing/pricing";
 import Testimonials from "../ui/testimonials/testimonials";
 import FAQ from "../ui/faq/faq";
+import Footer from "../ui/footer/footer";
 
 export default function HomePage() {
   return (
@@ -18,6 +19,7 @@ export default function HomePage() {
       <Pricing />
       {/* <Testimonials /> */}
       <FAQ />
+      <Footer />
     </div>
   );
 }
