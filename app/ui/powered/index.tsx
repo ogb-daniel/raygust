@@ -10,7 +10,7 @@ import Icon from "./icon";
 
 export default function Powered() {
   return (
-    <section className="flex justify-between items-center px-28">
+    <section className="flex justify-between items-center px-28 py-24">
       <p className="text-muted">Powered by</p>
       <div className=" flex gap-32 items-center">
         <Icon src={anthropicLogo} alt="Anthropic" symbol={anthropicSymbol} />

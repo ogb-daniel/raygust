@@ -1,12 +1,39 @@
+"use client";
 import Link from "next/link";
 import { routes } from "../lib/routes";
 import Logo from "./logo";
 import { Button } from "@heroui/react";
 import { ArrowRight } from "@gravity-ui/icons";
+import { useEffect, useRef, useState } from "react";
+import clsx from "clsx";
 
 function Navbar() {
+  const ref = useRef<HTMLElement>(null);
+  const [offScreen, setOffScreen] = useState<boolean>(false);
+  console.log(offScreen);
+
+  const handleEl = () => {
+    const rect = ref.current!.getBoundingClientRect();
+    if (window.scrollY <= 0) {
+      setOffScreen(false);
+    }
+    setOffScreen((prev) => (prev ? prev : rect.y < 0));
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", handleEl);
+    return () => {
+      window.removeEventListener("scroll", handleEl);
+    };
+  }, []);
   return (
-    <nav className="flex justify-between py-8 items-center px-16">
+    <nav
+      ref={ref}
+      className={clsx("flex justify-between items-center ", {
+        "sticky top-5 z-50 mx-28 bg-background border px-3 py-2 border-gray-200 rounded-xl shadow-[0_8px_40px_-12px_rgba(0,0,0,0.3)]":
+          offScreen,
+        "py-8 px-16": !offScreen,
+      })}
+    >
       <Logo />
       <ul className="flex gap-6 text-center">
         {routes.map((route) => (
