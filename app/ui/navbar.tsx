@@ -28,11 +28,14 @@ function Navbar() {
   return (
     <nav
       ref={ref}
-      className={clsx("flex justify-between items-center ", {
-        "sticky top-5 z-50 mx-28 bg-background border px-3 py-2 border-gray-200 rounded-xl shadow-[0_8px_40px_-12px_rgba(0,0,0,0.3)]":
-          offScreen,
-        "py-8 px-16": !offScreen,
-      })}
+      className={clsx(
+        "flex justify-between items-center transition-all duration-300",
+        {
+          "sticky top-5 z-50 mx-28 bg-background border px-3 py-2 border-gray-200 rounded-xl shadow-[0_8px_40px_-12px_rgba(0,0,0,0.3)]":
+            offScreen,
+          "py-8 mx-16 border-none": !offScreen,
+        },
+      )}
     >
       <Logo />
       <ul className="flex gap-6 text-center">
