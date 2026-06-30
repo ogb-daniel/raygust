@@ -10,9 +10,9 @@ import Icon from "./icon";
 
 export default function Powered() {
   return (
-    <section className="flex justify-between items-center px-28 py-24">
-      <p className="text-muted">Powered by</p>
-      <div className=" flex gap-32 items-center">
+    <section className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-6 px-6 md:px-12 lg:px-28 py-16 md:py-24">
+      <p className="text-muted text-center md:text-left">Powered by</p>
+      <div className="flex flex-wrap justify-center gap-8 md:gap-12 lg:gap-32 items-center">
         <Icon src={anthropicLogo} alt="Anthropic" symbol={anthropicSymbol} />
         <Icon src={openaiLogo} alt="OpenAI" symbol={openaiSymbol} />
         <Icon src={langchainLogo} alt="LangChain" />

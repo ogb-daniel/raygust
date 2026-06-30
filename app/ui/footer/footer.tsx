@@ -27,9 +27,9 @@ const linkColumns = [
 
 export default function Footer() {
   return (
-    <footer className="pt-20 pb-8 bg-white px-28 overflow-hidden">
+    <footer className="pt-16 sm:pt-20 pb-8 bg-white px-6 md:px-12 lg:px-28 overflow-hidden">
       {/* Top section: Newsletter + Link Columns */}
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-16 lg:gap-24">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-24">
         {/* Left: Newsletter */}
         <div className="flex flex-col items-start">
           <h3 className="text-2xl font-bold text-gray-900 tracking-tight">
@@ -58,7 +58,7 @@ export default function Footer() {
         </div>
 
         {/* Right: Link Columns in bordered cards - gallery layout */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {/* Column 1: Product (tall) + Company (short) */}
           <div className="flex flex-col gap-4">
             {[linkColumns[0], linkColumns[1]].map((column, i) => (
@@ -114,16 +114,16 @@ export default function Footer() {
       </div>
 
       {/* Bottom: Brand watermark + copyright */}
-      <div className="mt-20 relative">
+      <div className="mt-16 sm:mt-20 relative">
         {/* Large brand watermark */}
         <div className="relative flex items-end overflow-hidden">
-          <span className="text-[21vw] stroked-text font-black  leading-none text-transparent bg-clip-text  select-none whitespace-nowrap">
+          <span className="text-[18vw] sm:text-[21vw] stroked-text font-black leading-none text-transparent bg-clip-text select-none whitespace-nowrap">
             Raygust
           </span>
         </div>
 
         {/* Copyright */}
-        <div className=" pt-4 border-t border-gray-100 flex items-center justify-between">
+        <div className="pt-4 border-t border-gray-100 flex flex-col sm:flex-row items-center sm:justify-between gap-3 sm:gap-0">
           <p className="text-xs text-gray-400">
             © 2026 Raygust. All rights reserved.
           </p>

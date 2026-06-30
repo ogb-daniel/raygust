@@ -41,13 +41,13 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-24 overflow-hidden bg-white px-28">
+    <section className="py-24 overflow-hidden bg-white px-6 md:px-12 lg:px-28">
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-16 lg:gap-24 items-start">
         {/* Left side - Title + CTA */}
         <div className="flex flex-col items-start gap-6">
           <span className="section-header">FAQ</span>
 
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.15]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.15]">
             Frequently Asked
             <br />
             Questions

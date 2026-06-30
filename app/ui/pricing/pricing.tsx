@@ -101,13 +101,13 @@ export default function Pricing() {
   const currentPlans = plans[planType];
 
   return (
-    <section className="py-24 overflow-hidden bg-white px-28">
+    <section className="py-24 overflow-hidden bg-white px-6 md:px-12 lg:px-28">
       <div className="flex flex-col items-center text-center">
         {/* Section label */}
         <span className="section-header">Pricing</span>
 
         {/* Headline */}
-        <h2 className="mt-6 text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.15]">
+        <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.15]">
           Explore plans
         </h2>
 
@@ -137,7 +137,7 @@ export default function Pricing() {
 
         {/* Pricing Cards */}
         <div
-          className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl items-center"
+          className="mt-10 sm:mt-14 grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl items-stretch md:items-center"
           onMouseLeave={() => setHoveredIndex(null)}
         >
           {currentPlans.map((plan, index) => {

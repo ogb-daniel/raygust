@@ -46,24 +46,24 @@ export default function BuiltFor() {
         </div>
       </div>
 
-      <div className="flex flex-col items-center text-center relative z-10">
+      <div className="flex flex-col items-center text-center relative z-10 px-6 md:px-12 lg:px-28">
         {/* Section label */}
         <span className="section-header">Built For</span>
 
         {/* Headline */}
-        <h2 className="mt-6 text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.15]">
+        <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.15]">
           For teams, builders,
           <br />
           and everyone in between
         </h2>
 
         {/* Tabs */}
-        <div className="mt-10 inline-flex items-center gap-1 p-1.5 bg-gray-50 border border-gray-200 rounded-2xl">
+        <div className="mt-8 sm:mt-10 flex flex-wrap justify-center gap-1.5 p-1.5 bg-gray-50 border border-gray-200 rounded-2xl">
           {tabs.map((tab, index) => (
             <button
               key={tab.label}
               onClick={() => setActiveTab(index)}
-              className={`px-5 py-2.5 text-sm font-semibold rounded-xl transition-all duration-300 cursor-pointer ${
+              className={`px-3 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-sm font-semibold rounded-xl transition-all duration-300 cursor-pointer ${
                 activeTab === index
                   ? "bg-white text-gray-900 shadow-sm border border-gray-200"
                   : "text-gray-500 hover:text-gray-700"
@@ -75,56 +75,54 @@ export default function BuiltFor() {
         </div>
 
         {/* Image Collage Area */}
-        <div className="relative w-full mt-12 h-[420px] flex items-center justify-center overflow-hidden">
-          {/* Grid pattern background */}
-
+        <div className="relative w-full mt-10 sm:mt-12 h-[220px] sm:h-[300px] md:h-[350px] lg:h-[420px] flex items-center justify-center overflow-hidden">
           {/* Circular images + floating orbs */}
           <div className="relative z-[2] w-full max-w-4xl h-full">
             {/* Image circle 1 - left */}
-            <div className="absolute left-[2%] top-[18%] w-[180px] h-[180px] rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105">
+            <div className="absolute left-[2%] top-[18%] w-[80px] h-[80px] sm:w-[120px] sm:h-[120px] md:w-[150px] md:h-[150px] lg:w-[180px] lg:h-[180px] rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105">
               <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300" />
             </div>
 
             {/* Image circle 2 - center-left */}
-            <div className="absolute left-[22%] top-[8%] w-[200px] h-[200px] rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105">
+            <div className="absolute left-[22%] top-[8%] w-[90px] h-[90px] sm:w-[130px] sm:h-[130px] md:w-[170px] md:h-[170px] lg:w-[200px] lg:h-[200px] rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105">
               <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400" />
             </div>
 
             {/* Image circle 3 - center */}
-            <div className="absolute left-[42%] top-[14%] w-[190px] h-[190px] rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105">
+            <div className="absolute left-[42%] top-[14%] w-[85px] h-[85px] sm:w-[125px] sm:h-[125px] md:w-[160px] md:h-[160px] lg:w-[190px] lg:h-[190px] rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105">
               <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-350" />
             </div>
 
             {/* Image circle 4 - center-right */}
-            <div className="absolute right-[18%] top-[6%] w-[185px] h-[185px] rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105">
+            <div className="absolute right-[18%] top-[6%] w-[82px] h-[82px] sm:w-[120px] sm:h-[120px] md:w-[155px] md:h-[155px] lg:w-[185px] lg:h-[185px] rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105">
               <div className="w-full h-full bg-gradient-to-br from-gray-250 to-gray-400" />
             </div>
 
             {/* Image circle 5 - right */}
-            <div className="absolute right-[0%] top-[20%] w-[170px] h-[170px] rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105">
+            <div className="absolute right-[0%] top-[20%] w-[75px] h-[75px] sm:w-[110px] sm:h-[110px] md:w-[140px] md:h-[140px] lg:w-[170px] lg:h-[170px] rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105">
               <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400" />
             </div>
 
-            {/* Floating accent orbs */}
-            <div className="absolute left-[8%] bottom-[15%] w-[90px] h-[90px] rounded-full bg-accent opacity-90" />
-            <div className="absolute left-[18%] top-[5%] w-[50px] h-[50px] rounded-full bg-accent opacity-80" />
-            <div className="absolute left-[38%] bottom-[22%] w-[75px] h-[75px] rounded-full bg-accent opacity-85" />
-            <div className="absolute right-[25%] top-[2%] w-[65px] h-[65px] rounded-full bg-gradient-to-br from-accent via-pink-400 to-blue-400 opacity-90" />
-            <div className="absolute right-[8%] top-[8%] w-[55px] h-[55px] rounded-full bg-accent opacity-80" />
+            {/* Floating accent orbs - scaled down on mobile */}
+            <div className="absolute left-[8%] bottom-[15%] w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] lg:w-[90px] lg:h-[90px] rounded-full bg-accent opacity-90" />
+            <div className="absolute left-[18%] top-[5%] w-[25px] h-[25px] sm:w-[35px] sm:h-[35px] lg:w-[50px] lg:h-[50px] rounded-full bg-accent opacity-80" />
+            <div className="absolute left-[38%] bottom-[22%] w-[35px] h-[35px] sm:w-[50px] sm:h-[50px] lg:w-[75px] lg:h-[75px] rounded-full bg-accent opacity-85" />
+            <div className="absolute right-[25%] top-[2%] w-[30px] h-[30px] sm:w-[45px] sm:h-[45px] lg:w-[65px] lg:h-[65px] rounded-full bg-gradient-to-br from-accent via-pink-400 to-blue-400 opacity-90" />
+            <div className="absolute right-[8%] top-[8%] w-[25px] h-[25px] sm:w-[38px] sm:h-[38px] lg:w-[55px] lg:h-[55px] rounded-full bg-accent opacity-80" />
 
             {/* Small iridescent orb */}
-            <div className="absolute left-[40%] top-[2%] w-[40px] h-[40px] rounded-full bg-gradient-to-br from-pink-300 via-purple-200 to-blue-300 opacity-70 blur-[1px]" />
+            <div className="absolute left-[40%] top-[2%] w-[20px] h-[20px] sm:w-[30px] sm:h-[30px] lg:w-[40px] lg:h-[40px] rounded-full bg-gradient-to-br from-pink-300 via-purple-200 to-blue-300 opacity-70 blur-[1px]" />
           </div>
         </div>
 
         {/* Description text */}
-        <p className="mt-4 text-lg text-gray-600 leading-relaxed max-w-xl transition-all duration-300">
+        <p className="mt-4 text-base sm:text-lg text-gray-600 leading-relaxed max-w-xl transition-all duration-300">
           {tabs[activeTab].description}
         </p>
 
         {/* CTA Button */}
         <Button
-          className="mt-8 inline-flex items-center justify-center gap-2 px-6 py-6 text-sm font-semibold text-gray-900 bg-white border-gray-200 rounded-2xl border-2 hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm"
+          className="mt-6 sm:mt-8 inline-flex items-center justify-center gap-2 px-6 py-6 text-sm font-semibold text-gray-900 bg-white border-gray-200 rounded-2xl border-2 hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm"
           variant="outline"
         >
           Start Building
