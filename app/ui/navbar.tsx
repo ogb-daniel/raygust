@@ -20,14 +20,16 @@ function Navbar() {
     }
     setOffScreen((prev) => (prev ? prev : rect.y < 0));
   };
-
   useEffect(() => {
-    window.addEventListener("scroll", handleEl);
-    return () => {
-      window.removeEventListener("scroll", handleEl);
-    };
-  }, []);
+    const handleVirtualScroll = (e: Event) => {
+      const customEvent = e as CustomEvent<{ step: number }>;
 
+      setOffScreen(customEvent.detail.step > 0);
+    };
+    window.addEventListener("virtualScroll", handleVirtualScroll);
+    return () =>
+      window.removeEventListener("virtualScroll", handleVirtualScroll);
+  }, []);
   // Close mobile menu on resize to desktop
   useEffect(() => {
     const handleResize = () => {
@@ -45,9 +47,9 @@ function Navbar() {
       className={clsx(
         "flex justify-between items-center transition-all duration-300",
         {
-          "sticky top-5 z-50 mx-4 md:mx-8 lg:mx-28 bg-background border px-3 py-2 border-gray-200 rounded-xl shadow-[0_8px_40px_-12px_rgba(0,0,0,0.3)]":
+          "fixed top-5 left-0 right-0 z-50 mx-4 md:mx-8 lg:mx-28 bg-background border px-3 py-2 border-gray-200 rounded-xl shadow-[0_8px_40px_-12px_rgba(0,0,0,0.3)]":
             offScreen,
-          "py-6 mx-4 md:mx-8 lg:mx-16 border-none": !offScreen,
+          "absolute top-0 left-0 right-0 z-50 py-6 mx-4 md:mx-8 lg:mx-16 border-none": !offScreen,
         },
       )}
     >

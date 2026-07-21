@@ -56,9 +56,22 @@ const features = [
 
 export default function Features() {
   return (
-    <section className={clsx(styles.section, "px-6 md:px-12 lg:px-28")}>
-      <span className="section-header">Key Features</span>
-      <h2 className={styles.heading}>Intuitive and easy to use</h2>
+    <section
+      className={clsx(styles.section, "px-6 md:px-12 lg:px-28 h-full py-28")}
+    >
+      <div className="features-header opacity-0 inline-block translate-y-[20px]">
+        <span className="section-header">Key Features</span>
+      </div>
+      <h2 className={styles.heading}>
+        {"Intuitive and easy to use".split(" ").map((word, i) => (
+          <span
+            key={i}
+            className="features-word opacity-0 inline-block translate-y-[20px]"
+          >
+            {word}&nbsp;
+          </span>
+        ))}
+      </h2>
       <div className={styles.grid}>
         {features.map((feature) => (
           <FeatureCard

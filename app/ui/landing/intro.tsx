@@ -3,9 +3,11 @@ import { ArrowRight } from "lucide-react";
 
 export default function Intro() {
   return (
-    <section className="flex flex-col justify-center items-center text-center mt-[-100px] flex-1 min-h-screen px-6 md:px-12 lg:px-28">
+    <section className="flex flex-col justify-center items-center text-center  flex-1 h-full px-6 md:px-12 lg:px-28">
       <p className="uppercase rounded-2xl shadow w-fit py-2 px-3 flex items-center gap-2 sm:gap-4 section-header text-[10px] sm:text-xs">
-        <span className="hidden sm:inline">Meet Raygust: For businesses and developers</span>
+        <span className="hidden sm:inline">
+          Meet Raygust: For businesses and developers
+        </span>
         <span className="sm:hidden">Meet Raygust</span>
         <ArrowRight className="text-accent w-3.5 h-3.5 sm:w-4 sm:h-4" />
       </p>
