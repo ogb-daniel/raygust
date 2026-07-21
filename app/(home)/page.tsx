@@ -37,7 +37,7 @@ export default function HomePage() {
       if (isAnimating) return;
       isAnimating = true;
 
-      const totalSteps = 4; // Currently steps 0, 1, 2, 3
+      const totalSteps = 5; // Currently steps 0, 1, 2, 3, 4
       let nextStep = currentStep;
 
       if (direction === "down") {
@@ -151,6 +151,64 @@ export default function HomePage() {
           );
       }
 
+      if (nextStep === 4) {
+        gsap.fromTo(
+          ".built-header",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.8, delay: 0.8, ease: "power3.out" },
+        );
+
+        const tl = gsap.timeline({ delay: 1.0 });
+        tl.fromTo(
+          ".built-word",
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.05,
+            ease: "power3.out",
+          },
+        )
+          .fromTo(
+            ".built-tabs",
+            { opacity: 0, x: -30 },
+            { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" },
+            "-=0.4",
+          )
+          .fromTo(
+            ".built-orb",
+            { opacity: 0, scale: 0, rotation: -180 },
+            {
+              opacity: 1,
+              scale: 1,
+              rotation: 0,
+              duration: 0.8,
+              stagger: 0.05,
+              ease: "back.out(1.2)",
+            },
+            "-=0.4",
+          )
+          .fromTo(
+            ".built-desc-word",
+            { opacity: 0, y: 20 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.6,
+              stagger: 0.02,
+              ease: "power3.out",
+            },
+            "-=0.6",
+          )
+          .fromTo(
+            ".built-btn",
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
+            "-=0.2",
+          );
+      }
+
       currentStep = nextStep;
       setTimeout(() => {
         isAnimating = false;
@@ -211,7 +269,12 @@ export default function HomePage() {
         >
           <Works />
         </SmoothScrollSection>
-        <BuiltFor />
+        <SmoothScrollSection
+          id="step-4"
+          className="h-[100dvh] overflow-y-auto no-scrollbar"
+        >
+          <BuiltFor />
+        </SmoothScrollSection>
         <Pricing />
         {/* <Testimonials /> */}
         <FAQ />

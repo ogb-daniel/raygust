@@ -48,17 +48,23 @@ export default function BuiltFor() {
 
       <div className="flex flex-col items-center text-center relative z-10 px-6 md:px-12 lg:px-28">
         {/* Section label */}
-        <span className="section-header">Built For</span>
+        <div className="built-header opacity-0 translate-y-[20px] inline-block">
+          <span className="section-header">Built For</span>
+        </div>
 
         {/* Headline */}
         <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.15]">
-          For teams, builders,
+          {"For teams, builders,".split(" ").map((word, i) => (
+            <span key={`w1-${i}`} className="built-word opacity-0 inline-block translate-y-[20px]">{word}&nbsp;</span>
+          ))}
           <br />
-          and everyone in between
+          {"and everyone in between".split(" ").map((word, i) => (
+            <span key={`w2-${i}`} className="built-word opacity-0 inline-block translate-y-[20px]">{word}&nbsp;</span>
+          ))}
         </h2>
 
         {/* Tabs */}
-        <div className="mt-8 sm:mt-10 flex flex-wrap justify-center gap-1.5 p-1.5 bg-gray-50 border border-gray-200 rounded-2xl">
+        <div className="built-tabs opacity-0 -translate-x-[30px] mt-8 sm:mt-10 flex flex-wrap justify-center gap-1.5 p-1.5 bg-gray-50 border border-gray-200 rounded-2xl">
           {tabs.map((tab, index) => (
             <button
               key={tab.label}
@@ -79,57 +85,71 @@ export default function BuiltFor() {
           {/* Circular images + floating orbs */}
           <div className="relative z-[2] w-full max-w-4xl h-full">
             {/* Image circle 1 - left */}
-            <div className="absolute left-[2%] top-[18%] w-[80px] h-[80px] sm:w-[120px] sm:h-[120px] md:w-[150px] md:h-[150px] lg:w-[180px] lg:h-[180px] rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105">
-              <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300" />
+            <div className="built-orb opacity-0 scale-0 absolute left-[2%] top-[18%] w-[80px] h-[80px] sm:w-[120px] sm:h-[120px] md:w-[150px] md:h-[150px] lg:w-[180px] lg:h-[180px]">
+              <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105">
+                <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300" />
+              </div>
             </div>
 
             {/* Image circle 2 - center-left */}
-            <div className="absolute left-[22%] top-[8%] w-[90px] h-[90px] sm:w-[130px] sm:h-[130px] md:w-[170px] md:h-[170px] lg:w-[200px] lg:h-[200px] rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105">
-              <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400" />
+            <div className="built-orb opacity-0 scale-0 absolute left-[22%] top-[8%] w-[90px] h-[90px] sm:w-[130px] sm:h-[130px] md:w-[170px] md:h-[170px] lg:w-[200px] lg:h-[200px]">
+              <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105">
+                <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400" />
+              </div>
             </div>
 
             {/* Image circle 3 - center */}
-            <div className="absolute left-[42%] top-[14%] w-[85px] h-[85px] sm:w-[125px] sm:h-[125px] md:w-[160px] md:h-[160px] lg:w-[190px] lg:h-[190px] rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105">
-              <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-350" />
+            <div className="built-orb opacity-0 scale-0 absolute left-[42%] top-[14%] w-[85px] h-[85px] sm:w-[125px] sm:h-[125px] md:w-[160px] md:h-[160px] lg:w-[190px] lg:h-[190px]">
+              <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105">
+                <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-350" />
+              </div>
             </div>
 
             {/* Image circle 4 - center-right */}
-            <div className="absolute right-[18%] top-[6%] w-[82px] h-[82px] sm:w-[120px] sm:h-[120px] md:w-[155px] md:h-[155px] lg:w-[185px] lg:h-[185px] rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105">
-              <div className="w-full h-full bg-gradient-to-br from-gray-250 to-gray-400" />
+            <div className="built-orb opacity-0 scale-0 absolute right-[18%] top-[6%] w-[82px] h-[82px] sm:w-[120px] sm:h-[120px] md:w-[155px] md:h-[155px] lg:w-[185px] lg:h-[185px]">
+              <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105">
+                <div className="w-full h-full bg-gradient-to-br from-gray-250 to-gray-400" />
+              </div>
             </div>
 
             {/* Image circle 5 - right */}
-            <div className="absolute right-[0%] top-[20%] w-[75px] h-[75px] sm:w-[110px] sm:h-[110px] md:w-[140px] md:h-[140px] lg:w-[170px] lg:h-[170px] rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105">
-              <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400" />
+            <div className="built-orb opacity-0 scale-0 absolute right-[0%] top-[20%] w-[75px] h-[75px] sm:w-[110px] sm:h-[110px] md:w-[140px] md:h-[140px] lg:w-[170px] lg:h-[170px]">
+              <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105">
+                <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400" />
+              </div>
             </div>
 
             {/* Floating accent orbs - scaled down on mobile */}
-            <div className="absolute left-[8%] bottom-[15%] w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] lg:w-[90px] lg:h-[90px] rounded-full bg-accent opacity-90" />
-            <div className="absolute left-[18%] top-[5%] w-[25px] h-[25px] sm:w-[35px] sm:h-[35px] lg:w-[50px] lg:h-[50px] rounded-full bg-accent opacity-80" />
-            <div className="absolute left-[38%] bottom-[22%] w-[35px] h-[35px] sm:w-[50px] sm:h-[50px] lg:w-[75px] lg:h-[75px] rounded-full bg-accent opacity-85" />
-            <div className="absolute right-[25%] top-[2%] w-[30px] h-[30px] sm:w-[45px] sm:h-[45px] lg:w-[65px] lg:h-[65px] rounded-full bg-gradient-to-br from-accent via-pink-400 to-blue-400 opacity-90" />
-            <div className="absolute right-[8%] top-[8%] w-[25px] h-[25px] sm:w-[38px] sm:h-[38px] lg:w-[55px] lg:h-[55px] rounded-full bg-accent opacity-80" />
+            <div className="built-orb opacity-0 scale-0 absolute left-[8%] bottom-[15%] w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] lg:w-[90px] lg:h-[90px] rounded-full bg-accent opacity-90" />
+            <div className="built-orb opacity-0 scale-0 absolute left-[18%] top-[5%] w-[25px] h-[25px] sm:w-[35px] sm:h-[35px] lg:w-[50px] lg:h-[50px] rounded-full bg-accent opacity-80" />
+            <div className="built-orb opacity-0 scale-0 absolute left-[38%] bottom-[22%] w-[35px] h-[35px] sm:w-[50px] sm:h-[50px] lg:w-[75px] lg:h-[75px] rounded-full bg-accent opacity-85" />
+            <div className="built-orb opacity-0 scale-0 absolute right-[25%] top-[2%] w-[30px] h-[30px] sm:w-[45px] sm:h-[45px] lg:w-[65px] lg:h-[65px] rounded-full bg-gradient-to-br from-accent via-pink-400 to-blue-400 opacity-90" />
+            <div className="built-orb opacity-0 scale-0 absolute right-[8%] top-[8%] w-[25px] h-[25px] sm:w-[38px] sm:h-[38px] lg:w-[55px] lg:h-[55px] rounded-full bg-accent opacity-80" />
 
             {/* Small iridescent orb */}
-            <div className="absolute left-[40%] top-[2%] w-[20px] h-[20px] sm:w-[30px] sm:h-[30px] lg:w-[40px] lg:h-[40px] rounded-full bg-gradient-to-br from-pink-300 via-purple-200 to-blue-300 opacity-70 blur-[1px]" />
+            <div className="built-orb opacity-0 scale-0 absolute left-[40%] top-[2%] w-[20px] h-[20px] sm:w-[30px] sm:h-[30px] lg:w-[40px] lg:h-[40px] rounded-full bg-gradient-to-br from-pink-300 via-purple-200 to-blue-300 opacity-70 blur-[1px]" />
           </div>
         </div>
 
         {/* Description text */}
         <p className="mt-4 text-base sm:text-lg text-gray-600 leading-relaxed max-w-xl transition-all duration-300">
-          {tabs[activeTab].description}
+          {tabs[activeTab].description.split(" ").map((word, i) => (
+            <span key={i} className="built-desc-word inline-block">{word}&nbsp;</span>
+          ))}
         </p>
 
         {/* CTA Button */}
-        <Button
-          className="mt-6 sm:mt-8 inline-flex items-center justify-center gap-2 px-6 py-6 text-sm font-semibold text-gray-900 bg-white border-gray-200 rounded-2xl border-2 hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm"
-          variant="outline"
-        >
-          Start Building
-          <div className="rounded-lg px-3 py-1 border-2 backdrop-blur-md border-gray-100">
-            <ArrowRight />
-          </div>
-        </Button>
+        <div className="built-btn opacity-0 translate-y-[20px] mt-6 sm:mt-8">
+          <Button
+            className="inline-flex items-center justify-center gap-2 px-6 py-6 text-sm font-semibold text-gray-900 bg-white border-gray-200 rounded-2xl border-2 hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm"
+            variant="outline"
+          >
+            Start Building
+            <div className="rounded-lg px-3 py-1 border-2 backdrop-blur-md border-gray-100">
+              <ArrowRight />
+            </div>
+          </Button>
+        </div>
       </div>
     </section>
   );
