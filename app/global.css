@@ -45,3 +45,11 @@ html > body[data-scroll-locked] {
 .section-header {
   @apply px-3 py-1 text-xs font-bold tracking-widest text-gray-500 uppercase bg-gray-50 border border-gray-200 rounded-full;
 }
+
+@utility no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+}
