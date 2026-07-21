@@ -97,22 +97,27 @@ type PlanType = "individual" | "team";
 
 export default function Pricing() {
   const [planType, setPlanType] = useState<PlanType>("individual");
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const currentPlans = plans[planType];
 
   return (
     <section className="py-24 overflow-hidden bg-white px-6 md:px-12 lg:px-28">
       <div className="flex flex-col items-center text-center">
         {/* Section label */}
-        <span className="section-header">Pricing</span>
+        <div className="pricing-header inline-block">
+          <span className="section-header">Pricing</span>
+        </div>
 
         {/* Headline */}
         <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.15]">
-          Explore plans
+          {"Explore plans".split(" ").map((word, i) => (
+            <span key={i} className="pricing-word inline-block">
+              {word}&nbsp;
+            </span>
+          ))}
         </h2>
 
         {/* Toggle */}
-        <div className="mt-10 inline-flex gap-1 items-center p-1.5 bg-gray-50 border border-gray-200 rounded-2xl">
+        <div className="pricing-toggle mt-10 inline-flex gap-1 items-center p-1.5 bg-gray-50 border border-gray-200 rounded-2xl">
           <button
             onClick={() => setPlanType("individual")}
             className={`px-6 py-2.5 text-sm font-semibold rounded-xl transition-all duration-300 cursor-pointer ${
@@ -136,21 +141,17 @@ export default function Pricing() {
         </div>
 
         {/* Pricing Cards */}
-        <div
-          className="mt-10 sm:mt-14 grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl items-stretch md:items-center"
-          onMouseLeave={() => setHoveredIndex(null)}
-        >
+        <div className="mt-10 sm:mt-14 grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl items-stretch md:items-center">
           {currentPlans.map((plan, index) => {
-            const isHovered = hoveredIndex === index;
+            const isMiddle = index === 1;
 
             return (
               <div
                 key={plan.name}
-                onMouseEnter={() => setHoveredIndex(index)}
-                className={`relative flex flex-col rounded-2xl shadow-[0_8px_40px_-12px_rgba(0,0,0,0.08)]  p-7 text-left transition-all duration-300 cursor-default ${
-                  isHovered
+                className={`pricing-card-${index} relative flex flex-col rounded-2xl shadow-[0_8px_40px_-12px_rgba(0,0,0,0.08)] p-7 text-left cursor-default ${
+                  isMiddle
                     ? "border border-accent scale-[1.05] z-10"
-                    : "border border-gray-200 bg-white "
+                    : "border border-gray-200 bg-white"
                 }`}
               >
                 {/* Plan name & tagline */}
@@ -158,20 +159,20 @@ export default function Pricing() {
                 <p className="mt-1 text-sm text-gray-500">{plan.tagline}</p>
 
                 {/* CTA Button */}
-                {isHovered ? (
+                {isMiddle ? (
                   <Button className="rounded-2xl mt-5 w-full flex items-center justify-between font-semibold px-4 py-6 shadow-[inset_0_2px_1px_rgba(255,255,255,0.4),inset_2px_0_1px_rgba(255,255,255,0.3),inset_-2px_0_1px_rgba(255,255,255,0.3)]">
                     Get Plan
-                    <div className="rounded-lg px-3 py-1 shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)]  bg-white/10 backdrop-blur-md border-white/20">
+                    <div className="rounded-lg px-3 py-1 shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)] bg-white/10 backdrop-blur-md border-white/20">
                       <ArrowRight className="" />
                     </div>
                   </Button>
                 ) : (
                   <Button
                     variant="outline"
-                    className="mt-5 w-full inline-flex items-center justify-between gap-2 px-4 py-6 text-sm font-semibold text-gray-900  border-gray-200 rounded-2xl border-2 hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm"
+                    className="mt-5 w-full inline-flex items-center justify-between gap-2 px-4 py-6 text-sm font-semibold text-gray-900 border-gray-200 rounded-2xl border-2 hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm"
                   >
                     Get Plan
-                    <div className="rounded-lg px-3 py-1 border-2 backdrop-blur-md  border-gray-100">
+                    <div className="rounded-lg px-3 py-1 border-2 backdrop-blur-md border-gray-100">
                       <ArrowRight className="" />
                     </div>
                   </Button>
@@ -184,7 +185,7 @@ export default function Pricing() {
                 {plan.featurePrefix && (
                   <p
                     className={`mb-4 text-sm italic transition-colors duration-300 ${
-                      isHovered ? "text-accent" : "text-gray-400"
+                      isMiddle ? "text-accent" : "text-gray-400"
                     }`}
                   >
                     {plan.featurePrefix}
@@ -200,7 +201,7 @@ export default function Pricing() {
                     >
                       <Check
                         className={`w-4 h-4 mt-0.5 shrink-0 transition-colors duration-300 ${
-                          isHovered ? "text-accent" : "text-gray-400"
+                          isMiddle ? "text-accent" : "text-gray-400"
                         }`}
                       />
                       {feature}

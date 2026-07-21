@@ -37,7 +37,7 @@ export default function HomePage() {
       if (isAnimating) return;
       isAnimating = true;
 
-      const totalSteps = 5; // Currently steps 0, 1, 2, 3, 4
+      const totalSteps = 6; // Currently steps 0, 1, 2, 3, 4, 5
       let nextStep = currentStep;
 
       if (direction === "down") {
@@ -209,6 +209,51 @@ export default function HomePage() {
           );
       }
 
+      if (nextStep === 5) {
+        gsap.fromTo(
+          ".pricing-header",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.8, delay: 0.8, ease: "power3.out" },
+        );
+
+        const tl = gsap.timeline({ delay: 1.0 });
+        tl.fromTo(
+          ".pricing-word",
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.05,
+            ease: "power3.out",
+          },
+        )
+          .fromTo(
+            ".pricing-toggle",
+            { opacity: 0, x: -30 },
+            { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" },
+            "-=0.4",
+          )
+          .fromTo(
+            ".pricing-card-0",
+            { opacity: 0, y: 80 },
+            { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
+            "-=0.4",
+          )
+          .fromTo(
+            ".pricing-card-2",
+            { opacity: 0, y: 80 },
+            { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
+            "-=0.7",
+          )
+          .fromTo(
+            ".pricing-card-1",
+            { opacity: 0, y: 80 },
+            { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
+            "-=0.7",
+          );
+      }
+
       currentStep = nextStep;
       setTimeout(() => {
         isAnimating = false;
@@ -275,7 +320,12 @@ export default function HomePage() {
         >
           <BuiltFor />
         </SmoothScrollSection>
-        <Pricing />
+        <SmoothScrollSection
+          id="step-5"
+          className="h-[100dvh] overflow-y-auto no-scrollbar"
+        >
+          <Pricing />
+        </SmoothScrollSection>
         {/* <Testimonials /> */}
         <FAQ />
         <Footer />

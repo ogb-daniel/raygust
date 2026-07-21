@@ -55,11 +55,21 @@ export default function BuiltFor() {
         {/* Headline */}
         <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.15]">
           {"For teams, builders,".split(" ").map((word, i) => (
-            <span key={`w1-${i}`} className="built-word opacity-0 inline-block translate-y-[20px]">{word}&nbsp;</span>
+            <span
+              key={`w1-${i}`}
+              className="built-word opacity-0 inline-block translate-y-[20px]"
+            >
+              {word}&nbsp;
+            </span>
           ))}
           <br />
           {"and everyone in between".split(" ").map((word, i) => (
-            <span key={`w2-${i}`} className="built-word opacity-0 inline-block translate-y-[20px]">{word}&nbsp;</span>
+            <span
+              key={`w2-${i}`}
+              className="built-word opacity-0 inline-block translate-y-[20px]"
+            >
+              {word}&nbsp;
+            </span>
           ))}
         </h2>
 
@@ -87,7 +97,12 @@ export default function BuiltFor() {
             {/* Image circle 1 - left */}
             <div className="built-orb opacity-0 scale-0 absolute left-[2%] top-[18%] w-[80px] h-[80px] sm:w-[120px] sm:h-[120px] md:w-[150px] md:h-[150px] lg:w-[180px] lg:h-[180px]">
               <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105">
-                <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300" />
+                <div
+                  // style={{
+                  //   backgroundImage: `url('https://static.vecteezy.com/vite/assets/photo-masthead-375-BoK_p8LG.webp')`,
+                  // }}
+                  className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 bg-cover bg-center"
+                />
               </div>
             </div>
 
@@ -134,7 +149,9 @@ export default function BuiltFor() {
         {/* Description text */}
         <p className="mt-4 text-base sm:text-lg text-gray-600 leading-relaxed max-w-xl transition-all duration-300">
           {tabs[activeTab].description.split(" ").map((word, i) => (
-            <span key={i} className="built-desc-word inline-block">{word}&nbsp;</span>
+            <span key={i} className="built-desc-word inline-block">
+              {word}&nbsp;
+            </span>
           ))}
         </p>
 
