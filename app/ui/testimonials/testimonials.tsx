@@ -10,7 +10,7 @@ const testimonials = [
     name: "Sarah Martinez",
     handle: "@sarahbuilds",
     quote:
-      "The multi-LLM fallback is genius. OpenAI went down and our users didn't even notice — Anthropic picked up seamlessly.",
+      "The multi-LLM fallback is genius. OpenAI went down and our users didn't even notice",
     avatar: "SM",
   },
   {
@@ -105,8 +105,8 @@ export default function Testimonials() {
 
         {/* Headline */}
         <h2 className="mt-6 text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.15]">
-          Loved by teams and{" "}
-          <span className="text-accent">builders</span> everywhere
+          Loved by teams and <span className="text-accent">builders</span>{" "}
+          everywhere
         </h2>
       </div>
 

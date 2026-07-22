@@ -8,12 +8,12 @@ const faqs = [
   {
     question: "What is Raygust?",
     answer:
-      "Raygust lets you upload documents and ask questions about them using AI. It uses a technique called RAG (Retrieval-Augmented Generation) to give you accurate answers based on your actual files — not generic AI guesses.",
+      "Raygust lets you upload documents and ask questions about them using AI. It uses a technique called RAG (Retrieval-Augmented Generation) to give you accurate answers based on your actual files.",
   },
   {
     question: "Do I need to be a developer to use it?",
     answer:
-      "No. You can upload documents, manage your knowledge base, and ask questions entirely through the dashboard — no coding required. If you are a developer, we also offer Python and TypeScript SDKs for integration.",
+      "No. You can upload documents, manage your knowledge base, and ask questions entirely through the dashboard. If you are a developer, we also offer Python and TypeScript SDKs for integration.",
   },
   {
     question: "Which AI models power it?",
@@ -44,39 +44,50 @@ export default function FAQ() {
     <section className="py-24 overflow-hidden bg-white px-6 md:px-12 lg:px-28">
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-16 lg:gap-24 items-start">
         {/* Left side - Title + CTA */}
-        <div className="flex flex-col items-start gap-6">
-          <span className="section-header">FAQ</span>
+        <div className="flex flex-col  gap-6 h-full">
+          <div className="faq-header inline-block">
+            <span className="section-header">FAQ</span>
+          </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.15]">
-            Frequently Asked
+            {"Frequently Asked".split(" ").map((word, i) => (
+              <span key={`w1-${i}`} className="faq-word inline-block">
+                {word}&nbsp;
+              </span>
+            ))}
             <br />
-            Questions
+            {"Questions".split(" ").map((word, i) => (
+              <span key={`w2-${i}`} className="faq-word inline-block">
+                {word}&nbsp;
+              </span>
+            ))}
           </h2>
 
           <div className="mt-auto pt-12">
-            <p className="text-sm text-gray-500 leading-relaxed max-w-[260px]">
+            <p className="faq-desc text-sm text-gray-500 leading-relaxed max-w-[260px]">
               Didn&apos;t get the answer you were looking for from your
               questions?
             </p>
 
-            <Button className=" mt-4  rounded-2xl font-semibold px-4 py-6 shadow-[inset_0_2px_1px_rgba(255,255,255,0.4),inset_2px_0_1px_rgba(255,255,255,0.3),inset_-2px_0_1px_rgba(255,255,255,0.3)]">
-              Contact Us
-              <div className="rounded-lg px-3 py-1 shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)]  bg-white/10 backdrop-blur-md border-white/20">
-                <ArrowRight className="" />
-              </div>
-            </Button>
+            <div className="faq-btn mt-4">
+              <Button className="rounded-2xl font-semibold px-4 py-6 shadow-[inset_0_2px_1px_rgba(255,255,255,0.4),inset_2px_0_1px_rgba(255,255,255,0.3),inset_-2px_0_1px_rgba(255,255,255,0.3)]">
+                Contact Us
+                <div className="rounded-lg px-3 py-1 shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)]  bg-white/10 backdrop-blur-md border-white/20">
+                  <ArrowRight className="" />
+                </div>
+              </Button>
+            </div>
           </div>
         </div>
 
-        {/* Right side - Accordion */}
-        <div className="flex flex-col">
+        <div className="faq-accordion flex flex-col">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
 
             return (
               <div
                 key={faq.question}
-                className="border-b border-gray-200 last:border-b-0"
+                className="faq-item border-b border-gray-200 last:border-b-0"
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : index)}

@@ -37,7 +37,7 @@ export default function HomePage() {
       if (isAnimating) return;
       isAnimating = true;
 
-      const totalSteps = 6; // Currently steps 0, 1, 2, 3, 4, 5
+      const totalSteps = 7; // Currently steps 0, 1, 2, 3, 4, 5, 6
       let nextStep = currentStep;
 
       if (direction === "down") {
@@ -254,6 +254,51 @@ export default function HomePage() {
           );
       }
 
+      if (nextStep === 6) {
+        gsap.fromTo(
+          ".faq-header",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.8, delay: 0.8, ease: "power3.out" },
+        );
+
+        const tl = gsap.timeline({ delay: 1.0 });
+        tl.fromTo(
+          ".faq-word",
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.05,
+            ease: "power3.out",
+          },
+        )
+          .fromTo(
+            ".faq-item",
+            { opacity: 0, x: -80 },
+            {
+              opacity: 1,
+              x: 0,
+              duration: 0.8,
+              stagger: 0.05,
+              ease: "power3.out",
+            },
+            "-=0.4",
+          )
+          .fromTo(
+            ".faq-desc",
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
+            "-=0.4",
+          )
+          .fromTo(
+            ".faq-btn",
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
+            "-=0.4",
+          );
+      }
+
       currentStep = nextStep;
       setTimeout(() => {
         isAnimating = false;
@@ -326,8 +371,12 @@ export default function HomePage() {
         >
           <Pricing />
         </SmoothScrollSection>
-        {/* <Testimonials /> */}
-        <FAQ />
+        <SmoothScrollSection
+          id="step-6"
+          className="h-[100dvh] overflow-y-auto no-scrollbar"
+        >
+          <FAQ />
+        </SmoothScrollSection>
         <Footer />
       </div>
     </div>

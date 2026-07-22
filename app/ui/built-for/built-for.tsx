@@ -13,7 +13,7 @@ const tabs = [
   {
     label: "Customer Support",
     description:
-      "Turn your help docs into an AI assistant that answers customer questions accurately — grounded in your actual knowledge base.",
+      "Turn your help docs into an AI assistant that answers customer questions accurately",
   },
   {
     label: "Developers",
@@ -23,7 +23,7 @@ const tabs = [
   {
     label: "Agencies & Consultants",
     description:
-      "Manage isolated knowledge bases for each client. Multi-tenant by default — every API key gets its own secure data silo.",
+      "Manage isolated knowledge bases for each client. Multi-tenant by default",
   },
 ];
 
