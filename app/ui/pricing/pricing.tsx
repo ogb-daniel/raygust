@@ -100,7 +100,7 @@ export default function Pricing() {
   const currentPlans = plans[planType];
 
   return (
-    <section className="py-24 overflow-hidden bg-white px-6 md:px-12 lg:px-28">
+    <section className="py-28 overflow-hidden bg-white px-6 md:px-12 lg:px-28">
       <div className="flex flex-col items-center text-center">
         {/* Section label */}
         <div className="pricing-header inline-block">

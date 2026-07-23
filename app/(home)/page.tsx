@@ -37,7 +37,7 @@ export default function HomePage() {
       if (isAnimating) return;
       isAnimating = true;
 
-      const totalSteps = 7; // Currently steps 0, 1, 2, 3, 4, 5, 6
+      const totalSteps = 8; // Currently steps 0, 1, 2, 3, 4, 5, 6, 7
       let nextStep = currentStep;
 
       if (direction === "down") {
@@ -299,6 +299,45 @@ export default function HomePage() {
           );
       }
 
+      if (nextStep === 7) {
+        gsap.fromTo(
+          ".footer-newsletter",
+          { opacity: 0, y: 40 },
+          { opacity: 1, y: 0, duration: 0.8, delay: 0.8, ease: "power3.out" },
+        );
+
+        const tl = gsap.timeline({ delay: 1.0 });
+        tl.fromTo(
+          [".footer-card-Product", ".footer-card-Support"],
+          { opacity: 0, y: 40 },
+          { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "power3.out" },
+        )
+          .fromTo(
+            [".footer-card-Company", ".footer-card-Resources"],
+            { opacity: 0, y: -40 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              stagger: 0.1,
+              ease: "power3.out",
+            },
+            "-=0.6",
+          )
+          .fromTo(
+            ".footer-watermark",
+            { opacity: 0, x: -200 },
+            { opacity: 1, x: 0, duration: 1.2, ease: "power3.out" },
+            "-=0.4",
+          )
+          .fromTo(
+            ".footer-bottom",
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
+            "-=0.8",
+          );
+      }
+
       currentStep = nextStep;
       setTimeout(() => {
         isAnimating = false;
@@ -377,7 +416,12 @@ export default function HomePage() {
         >
           <FAQ />
         </SmoothScrollSection>
-        <Footer />
+        <SmoothScrollSection
+          id="step-7"
+          className="h-[100dvh] overflow-y-auto no-scrollbar"
+        >
+          <Footer />
+        </SmoothScrollSection>
       </div>
     </div>
   );

@@ -31,7 +31,7 @@ export default function BuiltFor() {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <section className="py-24 overflow-hidden bg-white relative">
+    <section className="py-28 overflow-hidden bg-white relative">
       <div className="absolute inset-3 bg-accent-soft rounded-xl opacity-40 overflow-hidden">
         <div className="absolute inset-x-0 bottom-0 h-1/2">
           <div className="absolute inset-0 grid-pattern-accent opacity-[0.15]" />

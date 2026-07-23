@@ -27,11 +27,11 @@ const linkColumns = [
 
 export default function Footer() {
   return (
-    <footer className="pt-16 sm:pt-20 pb-8 bg-white px-6 md:px-12 lg:px-28 overflow-hidden">
+    <footer className="pt-16 sm:pt-28 pb-8 bg-white px-6 md:px-12 lg:px-28 ">
       {/* Top section: Newsletter + Link Columns */}
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-24">
         {/* Left: Newsletter */}
-        <div className="flex flex-col items-start">
+        <div className="footer-newsletter flex flex-col items-start">
           <h3 className="text-2xl font-bold text-gray-900 tracking-tight">
             Newsletter
           </h3>
@@ -40,7 +40,7 @@ export default function Footer() {
             business world.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 w-full max-w-[320px]">
+          <div className="mt-auto flex flex-col gap-3 w-full max-w-[320px]">
             <input
               type="text"
               placeholder="Your name"
@@ -64,7 +64,7 @@ export default function Footer() {
             {[linkColumns[0], linkColumns[1]].map((column, i) => (
               <div
                 key={column.title}
-                className={`rounded-2xl border border-gray-200 p-6 ${i === 1 ? "flex-1" : ""}`}
+                className={`footer-card-${column.title} rounded-2xl border border-gray-200 p-6 ${i === 1 ? "flex-1" : ""}`}
               >
                 <h4 className="text-xs font-bold tracking-widest text-accent uppercase mb-5">
                   {column.title}
@@ -90,7 +90,7 @@ export default function Footer() {
             {[linkColumns[2], linkColumns[3]].map((column, i) => (
               <div
                 key={column.title}
-                className={`rounded-2xl border border-gray-200 p-6 ${i === 1 ? "flex-1" : ""}`}
+                className={`footer-card-${column.title} rounded-2xl border border-gray-200 p-6 ${i === 1 ? "flex-1" : ""}`}
               >
                 <h4 className="text-xs font-bold tracking-widest text-accent uppercase mb-5">
                   {column.title}
@@ -114,16 +114,16 @@ export default function Footer() {
       </div>
 
       {/* Bottom: Brand watermark + copyright */}
-      <div className="mt-16 sm:mt-20 relative">
+      <div className="mt-10  relative">
         {/* Large brand watermark */}
-        <div className="relative flex items-end overflow-hidden">
-          <span className="text-[18vw] sm:text-[21vw] stroked-text font-black leading-none text-transparent bg-clip-text select-none whitespace-nowrap">
+        <div className="footer-watermark relative flex items-end overflow-hidden ">
+          <span className="text-[18vw] sm:text-[21vw]  stroked-text font-black leading-none text-transparent bg-clip-text select-none whitespace-nowrap">
             Raygust
           </span>
         </div>
 
         {/* Copyright */}
-        <div className="pt-4 border-t border-gray-100 flex flex-col sm:flex-row items-center sm:justify-between gap-3 sm:gap-0">
+        <div className="footer-bottom pt-4 border-t border-gray-100 flex flex-col sm:flex-row items-center sm:justify-between gap-3 sm:gap-0">
           <p className="text-xs text-gray-400">
             © 2026 Raygust. All rights reserved.
           </p>

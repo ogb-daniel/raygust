@@ -9,7 +9,7 @@ import {
 
 export default function Works() {
   return (
-    <section className="py-32 pb-24 overflow-hidden bg-white px-6 md:px-12 lg:px-28">
+    <section className="py-28 pb-24 overflow-hidden bg-white px-6 md:px-12 lg:px-28">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
         {/* Left Content */}
         <div className="flex flex-col items-start gap-6">
