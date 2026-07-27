@@ -1,0 +1,5 @@
+import ComingSoon from "../ui/coming-soon";
+
+export default function CareersPage() {
+  return <ComingSoon title="Careers" />;
+}
