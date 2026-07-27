@@ -6,6 +6,8 @@ import {
   FileText,
   CheckCircle2,
 } from "lucide-react";
+import Link from "next/link";
+import { actionRoutes } from "../../lib/routes";
 
 export default function Works() {
   return (
@@ -76,15 +78,17 @@ export default function Works() {
           </div>
 
           <div className="works-btn opacity-0 translate-y-[20px] mt-6">
-            <Button
-              variant="outline"
-              className="inline-flex items-center justify-center gap-2 px-6 py-6 text-sm font-semibold text-gray-900 bg-white border-gray-200 rounded-2xl border-2 hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm"
-            >
-              See How It Works
-              <div className="rounded-lg px-3 py-1 border-2 backdrop-blur-md  border-gray-100">
-                <ArrowRight className="" />
-              </div>
-            </Button>
+            <Link href={actionRoutes.sales}>
+              <Button
+                variant="outline"
+                className="inline-flex items-center justify-center gap-2 px-6 py-6 text-sm font-semibold text-gray-900 bg-white border-gray-200 rounded-2xl border-2 hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm"
+              >
+                See How It Works
+                <div className="rounded-lg px-3 py-1 border-2 backdrop-blur-md  border-gray-100">
+                  <ArrowRight className="" />
+                </div>
+              </Button>
+            </Link>
           </div>
         </div>
 

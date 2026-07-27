@@ -1,6 +1,9 @@
 import { Button } from "@heroui/react";
 import { ArrowRight } from "lucide-react";
 
+import { actionRoutes } from "../../lib/routes";
+import Link from "next/link";
+
 export default function Intro() {
   return (
     <section className="flex flex-col justify-center items-center text-center  flex-1 h-full px-6 md:px-12 lg:px-28">
@@ -18,22 +21,26 @@ export default function Intro() {
         Upload PDFs, Markdown, or web pages. Chat. Integrate in 3 lines of code.
       </p>
       <div className="flex flex-col sm:flex-row items-center gap-4 mt-6 sm:mt-8 w-full sm:w-auto">
-        <Button
-          variant="outline"
-          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-6 text-sm font-semibold text-gray-900  border-gray-200 rounded-2xl border-2 hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm"
-        >
-          Install SDK
-          <div className="rounded-lg px-3 py-1 border-2 backdrop-blur-md  border-gray-100">
-            <ArrowRight className="" />
-          </div>
-        </Button>
+        <Link href="/docs" className="w-full sm:w-auto">
+          <Button
+            variant="outline"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-6 text-sm font-semibold text-gray-900  border-gray-200 rounded-2xl border-2 hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm"
+          >
+            Install SDK
+            <div className="rounded-lg px-3 py-1 border-2 backdrop-blur-md  border-gray-100">
+              <ArrowRight className="" />
+            </div>
+          </Button>
+        </Link>
 
-        <Button className="w-full sm:w-auto rounded-2xl font-semibold px-4 py-6 shadow-[inset_0_2px_1px_rgba(255,255,255,0.4),inset_2px_0_1px_rgba(255,255,255,0.3),inset_-2px_0_1px_rgba(255,255,255,0.3)]">
-          Get Started
-          <div className="rounded-lg px-3 py-1 shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)]  bg-white/10 backdrop-blur-md border-white/20">
-            <ArrowRight className="" />
-          </div>
-        </Button>
+        <Link href={actionRoutes.signup} className="w-full sm:w-auto">
+          <Button className="w-full sm:w-auto rounded-2xl font-semibold px-4 py-6 shadow-[inset_0_2px_1px_rgba(255,255,255,0.4),inset_2px_0_1px_rgba(255,255,255,0.3),inset_-2px_0_1px_rgba(255,255,255,0.3)]">
+            Get Started
+            <div className="rounded-lg px-3 py-1 shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)]  bg-white/10 backdrop-blur-md border-white/20">
+              <ArrowRight className="" />
+            </div>
+          </Button>
+        </Link>
       </div>
     </section>
   );

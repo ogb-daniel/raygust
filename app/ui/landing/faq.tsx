@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { Plus, Minus, ArrowRight } from "lucide-react";
 import { Button } from "@heroui/react";
+import Link from "next/link";
+import { actionRoutes } from "../../lib/routes";
 
 const faqs = [
   {
@@ -70,12 +72,14 @@ export default function FAQ() {
             </p>
 
             <div className="faq-btn mt-4">
-              <Button className="rounded-2xl font-semibold px-4 py-6 shadow-[inset_0_2px_1px_rgba(255,255,255,0.4),inset_2px_0_1px_rgba(255,255,255,0.3),inset_-2px_0_1px_rgba(255,255,255,0.3)]">
-                Contact Us
-                <div className="rounded-lg px-3 py-1 shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)]  bg-white/10 backdrop-blur-md border-white/20">
-                  <ArrowRight className="" />
-                </div>
-              </Button>
+              <Link href={actionRoutes.contact}>
+                <Button className="rounded-2xl font-semibold px-4 py-6 shadow-[inset_0_2px_1px_rgba(255,255,255,0.4),inset_2px_0_1px_rgba(255,255,255,0.3),inset_-2px_0_1px_rgba(255,255,255,0.3)]">
+                  Contact Us
+                  <div className="rounded-lg px-3 py-1 shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)]  bg-white/10 backdrop-blur-md border-white/20">
+                    <ArrowRight className="" />
+                  </div>
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

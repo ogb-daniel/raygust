@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@heroui/react";
+import Link from "next/link";
+import { actionRoutes } from "../../lib/routes";
 
 const plans = {
   individual: [
@@ -160,22 +162,26 @@ export default function Pricing() {
 
                 {/* CTA Button */}
                 {isMiddle ? (
-                  <Button className="rounded-2xl mt-5 w-full flex items-center justify-between font-semibold px-4 py-6 shadow-[inset_0_2px_1px_rgba(255,255,255,0.4),inset_2px_0_1px_rgba(255,255,255,0.3),inset_-2px_0_1px_rgba(255,255,255,0.3)]">
-                    Get Plan
-                    <div className="rounded-lg px-3 py-1 shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)] bg-white/10 backdrop-blur-md border-white/20">
-                      <ArrowRight className="" />
-                    </div>
-                  </Button>
+                  <Link href={actionRoutes.signup} className="w-full mt-5">
+                    <Button className="rounded-2xl w-full flex items-center justify-between font-semibold px-4 py-6 shadow-[inset_0_2px_1px_rgba(255,255,255,0.4),inset_2px_0_1px_rgba(255,255,255,0.3),inset_-2px_0_1px_rgba(255,255,255,0.3)]">
+                      Get Plan
+                      <div className="rounded-lg px-3 py-1 shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)] bg-white/10 backdrop-blur-md border-white/20">
+                        <ArrowRight className="" />
+                      </div>
+                    </Button>
+                  </Link>
                 ) : (
-                  <Button
-                    variant="outline"
-                    className="mt-5 w-full inline-flex items-center justify-between gap-2 px-4 py-6 text-sm font-semibold text-gray-900 border-gray-200 rounded-2xl border-2 hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm"
-                  >
-                    Get Plan
-                    <div className="rounded-lg px-3 py-1 border-2 backdrop-blur-md border-gray-100">
-                      <ArrowRight className="" />
-                    </div>
-                  </Button>
+                  <Link href={actionRoutes.signup} className="w-full mt-5">
+                    <Button
+                      variant="outline"
+                      className="w-full inline-flex items-center justify-between gap-2 px-4 py-6 text-sm font-semibold text-gray-900 border-gray-200 rounded-2xl border-2 hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm"
+                    >
+                      Get Plan
+                      <div className="rounded-lg px-3 py-1 border-2 backdrop-blur-md border-gray-100">
+                        <ArrowRight className="" />
+                      </div>
+                    </Button>
+                  </Link>
                 )}
 
                 {/* Divider */}

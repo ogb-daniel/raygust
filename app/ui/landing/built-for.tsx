@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { Button } from "@heroui/react";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { actionRoutes } from "../../lib/routes";
 
 const tabs = [
   {
@@ -155,17 +157,18 @@ export default function BuiltFor() {
           ))}
         </p>
 
-        {/* CTA Button */}
         <div className="built-btn opacity-0 translate-y-[20px] mt-6 sm:mt-8">
-          <Button
-            className="inline-flex items-center justify-center gap-2 px-6 py-6 text-sm font-semibold text-gray-900 bg-white border-gray-200 rounded-2xl border-2 hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm"
-            variant="outline"
-          >
-            Start Building
-            <div className="rounded-lg px-3 py-1 border-2 backdrop-blur-md border-gray-100">
-              <ArrowRight />
-            </div>
-          </Button>
+          <Link href={actionRoutes.signup}>
+            <Button
+              className="inline-flex items-center justify-center gap-2 px-6 py-6 text-sm font-semibold text-gray-900 bg-white border-gray-200 rounded-2xl border-2 hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm"
+              variant="outline"
+            >
+              Start Building
+              <div className="rounded-lg px-3 py-1 border-2 backdrop-blur-md border-gray-100">
+                <ArrowRight />
+              </div>
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

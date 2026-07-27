@@ -1,29 +1,6 @@
 import { Button } from "@heroui/react";
-
-const linkColumns = [
-  {
-    title: "Product",
-    links: ["Features", "Pricing", "Changelog", "Roadmap"],
-  },
-  {
-    title: "Company",
-    links: ["About", "Blog", "Careers"],
-  },
-  {
-    title: "Support",
-    links: [
-      "Help center",
-      "Contact us",
-      "Privacy & terms",
-      "Cookie policy",
-      "Sitemap",
-    ],
-  },
-  {
-    title: "Resources",
-    links: ["Documentation", "SDK Reference", "API Status", "GitHub"],
-  },
-];
+import Link from "next/link";
+import { footerColumns, actionRoutes, Route } from "../../lib/routes";
 
 export default function Footer() {
   return (
@@ -61,7 +38,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {/* Column 1: Product (tall) + Company (short) */}
           <div className="flex flex-col gap-4">
-            {[linkColumns[0], linkColumns[1]].map((column, i) => (
+            {[footerColumns[0], footerColumns[1]].map((column, i) => (
               <div
                 key={column.title}
                 className={`footer-card-${column.title} rounded-2xl border border-gray-200 p-6 ${i === 1 ? "flex-1" : ""}`}
@@ -70,14 +47,24 @@ export default function Footer() {
                   {column.title}
                 </h4>
                 <ul className="flex flex-col gap-3">
-                  {column.links.map((link) => (
-                    <li key={link}>
-                      <a
-                        href="#"
+                  {column.links.map((link: Route) => (
+                    <li key={link.name}>
+                      <Link
+                        href={link.url}
                         className="text-sm text-gray-600 no-underline hover:text-gray-900 transition-colors"
+                        onClick={(e) => {
+                          if (link.isAnchor && link.step !== undefined) {
+                            e.preventDefault();
+                            window.dispatchEvent(
+                              new CustomEvent("navToStep", {
+                                detail: { step: link.step },
+                              })
+                            );
+                          }
+                        }}
                       >
-                        {link}
-                      </a>
+                        {link.name}
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -87,7 +74,7 @@ export default function Footer() {
 
           {/* Column 2: Support (tall) + Resources (short) */}
           <div className="flex flex-col gap-4">
-            {[linkColumns[2], linkColumns[3]].map((column, i) => (
+            {[footerColumns[2], footerColumns[3]].map((column, i) => (
               <div
                 key={column.title}
                 className={`footer-card-${column.title} rounded-2xl border border-gray-200 p-6 ${i === 1 ? "flex-1" : ""}`}
@@ -96,14 +83,24 @@ export default function Footer() {
                   {column.title}
                 </h4>
                 <ul className="flex flex-col gap-3">
-                  {column.links.map((link) => (
-                    <li key={link}>
-                      <a
-                        href="#"
+                  {column.links.map((link: Route) => (
+                    <li key={link.name}>
+                      <Link
+                        href={link.url}
                         className="text-sm text-gray-600 no-underline hover:text-gray-900 transition-colors"
+                        onClick={(e) => {
+                          if (link.isAnchor && link.step !== undefined) {
+                            e.preventDefault();
+                            window.dispatchEvent(
+                              new CustomEvent("navToStep", {
+                                detail: { step: link.step },
+                              })
+                            );
+                          }
+                        }}
                       >
-                        {link}
-                      </a>
+                        {link.name}
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -128,18 +125,18 @@ export default function Footer() {
             © 2026 Raygust. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <a
-              href="#"
+            <Link
+              href={actionRoutes.privacy}
               className="text-xs text-gray-400 no-underline hover:text-gray-600 transition-colors"
             >
               Privacy Policy
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              href={actionRoutes.terms}
               className="text-xs text-gray-400 no-underline hover:text-gray-600 transition-colors"
             >
               Terms of Service
-            </a>
+            </Link>
           </div>
         </div>
       </div>
