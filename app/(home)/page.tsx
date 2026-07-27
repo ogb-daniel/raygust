@@ -33,23 +33,28 @@ export default function HomePage() {
     let currentStep = 0;
     let isAnimating = false;
 
-    function goToStep(direction: string) {
+    function goToStep(direction: string | number) {
       if (isAnimating) return;
-      isAnimating = true;
 
       const totalSteps = 8; // Currently steps 0, 1, 2, 3, 4, 5, 6, 7
       let nextStep = currentStep;
 
-      if (direction === "down") {
+      if (typeof direction === "number") {
+        if (direction >= 0 && direction < totalSteps && direction !== currentStep) {
+          nextStep = direction;
+        } else {
+          return;
+        }
+      } else if (direction === "down") {
         if (currentStep < totalSteps - 1) nextStep++;
       } else if (direction === "up") {
         if (currentStep > 0) nextStep--;
       }
 
       if (nextStep === currentStep) {
-        isAnimating = false;
         return;
       }
+      isAnimating = true;
 
       let targetY = 0;
       if (nextStep === 1) {
@@ -380,6 +385,16 @@ export default function HomePage() {
         }
       },
     });
+
+    const handleNavToStep = (e: Event) => {
+      const customEvent = e as CustomEvent<{ step: number }>;
+      goToStep(customEvent.detail.step);
+    };
+    window.addEventListener("navToStep", handleNavToStep);
+
+    return () => {
+      window.removeEventListener("navToStep", handleNavToStep);
+    };
   });
   return (
     <div className={`overflow-hidden h-[100dvh]`}>
