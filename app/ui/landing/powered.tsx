@@ -25,8 +25,10 @@ export default function Powered({ ref }: PoweredProps) {
       ref={poweredRef}
       className="flex flex-col logo-item md:flex-row justify-between items-center gap-8 md:gap-6 px-6 md:px-12 lg:px-28 "
     >
-      <p className="text-muted text-center md:text-left">Powered by</p>
-      <div className="flex flex-wrap justify-center gap-8 md:gap-12 lg:gap-32 items-center">
+      <p className="text-muted text-center md:text-left text-nowrap">
+        Powered by
+      </p>
+      <div className="flex  justify-center gap-8 md:gap-12 lg:gap-32 items-center">
         <Icon src={anthropicLogo} alt="Anthropic" symbol={anthropicSymbol} />
         <Icon src={openaiLogo} alt="OpenAI" symbol={openaiSymbol} />
         <Icon src={langchainLogo} alt="LangChain" />

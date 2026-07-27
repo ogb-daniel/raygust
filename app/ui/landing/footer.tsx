@@ -58,7 +58,7 @@ export default function Footer() {
                             window.dispatchEvent(
                               new CustomEvent("navToStep", {
                                 detail: { step: link.step },
-                              })
+                              }),
                             );
                           }
                         }}
@@ -94,7 +94,7 @@ export default function Footer() {
                             window.dispatchEvent(
                               new CustomEvent("navToStep", {
                                 detail: { step: link.step },
-                              })
+                              }),
                             );
                           }
                         }}

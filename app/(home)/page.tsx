@@ -2,7 +2,7 @@
 import Intro from "../ui/landing/intro";
 import Features from "../ui/landing/features";
 import Works from "../ui/landing/works";
-import Powered from "../ui/landing";
+import Powered from "../ui/landing/powered";
 import BuiltFor from "../ui/landing/built-for";
 import Pricing from "../ui/landing/pricing";
 import Testimonials from "../ui/landing/testimonials";
@@ -40,7 +40,11 @@ export default function HomePage() {
       let nextStep = currentStep;
 
       if (typeof direction === "number") {
-        if (direction >= 0 && direction < totalSteps && direction !== currentStep) {
+        if (
+          direction >= 0 &&
+          direction < totalSteps &&
+          direction !== currentStep
+        ) {
           nextStep = direction;
         } else {
           return;
