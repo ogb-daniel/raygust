@@ -25,10 +25,10 @@ export default function Powered({ ref }: PoweredProps) {
       ref={poweredRef}
       className="flex flex-col logo-item md:flex-row justify-between items-center gap-8 md:gap-6 px-6 md:px-12 lg:px-28 "
     >
-      <p className="text-muted text-center md:text-left text-nowrap">
+      <p className="text-muted text-center md:text-left text-nowrap ">
         Powered by
       </p>
-      <div className="flex  justify-center gap-8 md:gap-12 lg:gap-32 items-center">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 items-center gap-5">
         <Icon src={anthropicLogo} alt="Anthropic" symbol={anthropicSymbol} />
         <Icon src={openaiLogo} alt="OpenAI" symbol={openaiSymbol} />
         <Icon src={langchainLogo} alt="LangChain" />
