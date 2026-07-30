@@ -1,10 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Button } from "@heroui/react";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { actionRoutes } from "../../lib/routes";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { SplitText } from "gsap/SplitText";
 
 const tabs = [
   {
@@ -31,6 +34,20 @@ const tabs = [
 
 export default function BuiltFor() {
   const [activeTab, setActiveTab] = useState(0);
+  const isFirstRender = useRef(true);
+
+  useGSAP(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    const split = new SplitText(".built-desc", { type: "words" });
+    gsap.fromTo(
+      split.words,
+      { opacity: 0, y: 10 },
+      { opacity: 1, y: 0, duration: 0.4, stagger: 0.015, ease: "power2.out" }
+    );
+  }, { dependencies: [activeTab], revertOnUpdate: true });
 
   return (
     <section className="py-28 overflow-hidden bg-white relative">
@@ -135,7 +152,7 @@ export default function BuiltFor() {
         </div>
 
         {/* Description text */}
-        <p key={activeTab} className="built-desc mt-4 text-base sm:text-lg text-gray-600 leading-relaxed max-w-xl transition-all duration-300">
+        <p key={activeTab} className="built-desc mt-4 text-base sm:text-lg text-gray-600 leading-relaxed max-w-xl">
           {tabs[activeTab].description}
         </p>
 

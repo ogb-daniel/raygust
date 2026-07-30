@@ -41,7 +41,6 @@ export default function HomePage() {
     const featuresSplit = new SplitText(".features-title", { type: "words" });
     const worksSplit = new SplitText(".works-title", { type: "words" });
     const builtSplit = new SplitText(".built-title", { type: "words" });
-    const builtDescSplit = new SplitText(".built-desc", { type: "words" });
     const pricingSplit = new SplitText(".pricing-title", { type: "words" });
     const faqSplit = new SplitText(".faq-title", { type: "words" });
 
@@ -52,12 +51,12 @@ export default function HomePage() {
         featuresSplit.words,
         worksSplit.words,
         builtSplit.words,
-        builtDescSplit.words,
         pricingSplit.words,
         faqSplit.words,
       ],
       { opacity: 0, y: 20 }
     );
+    gsap.set(".built-desc", { opacity: 0 });
     gsap.set(introDescSplit.chars, { opacity: 0 });
 
     const initialTl = gsap.timeline({ delay: 0.2 });
@@ -220,6 +219,7 @@ export default function HomePage() {
       }
 
       if (nextStep === 4) {
+        gsap.set(".built-desc", { opacity: 0 });
         gsap.fromTo(
           ".built-header",
           { opacity: 0, y: 20 },
@@ -257,18 +257,18 @@ export default function HomePage() {
             },
             "-=0.4",
           )
-          .fromTo(
-            builtDescSplit.words,
-            { opacity: 0, y: 20 },
-            {
+          .add(() => {
+            const dynamicBuiltSplit = new SplitText(".built-desc", { type: "words" });
+            gsap.set(dynamicBuiltSplit.words, { opacity: 0, y: 20 });
+            gsap.set(".built-desc", { opacity: 1 });
+            gsap.to(dynamicBuiltSplit.words, {
               opacity: 1,
               y: 0,
               duration: 0.6,
               stagger: 0.02,
               ease: "power3.out",
-            },
-            "-=0.6",
-          )
+            });
+          }, "-=0.6")
           .fromTo(
             ".built-btn",
             { opacity: 0, y: 20 },
