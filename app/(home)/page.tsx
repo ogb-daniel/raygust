@@ -37,7 +37,9 @@ export default function HomePage() {
 
     // Initialize SplitText
     const introTitleSplit = new SplitText(".intro-title", { type: "words" });
-    const introDescSplit = new SplitText(".intro-desc", { type: "words,chars" });
+    const introDescSplit = new SplitText(".intro-desc", {
+      type: "words,chars",
+    });
     const featuresSplit = new SplitText(".features-title", { type: "words" });
     const worksSplit = new SplitText(".works-title", { type: "words" });
     const builtSplit = new SplitText(".built-title", { type: "words" });
@@ -54,7 +56,7 @@ export default function HomePage() {
         pricingSplit.words,
         faqSplit.words,
       ],
-      { opacity: 0, y: 20 }
+      { opacity: 0, y: 20 },
     );
     gsap.set(".built-desc", { opacity: 0 });
     gsap.set(introDescSplit.chars, { opacity: 0 });
@@ -64,31 +66,31 @@ export default function HomePage() {
       .fromTo(
         "nav",
         { y: -50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }
+        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
       )
       .fromTo(
         ".intro-badge",
         { opacity: 0 },
         { opacity: 1, duration: 0.8, ease: "power3.out" },
-        "-=0.4"
+        "-=0.4",
       )
       .fromTo(
         introTitleSplit.words,
         { opacity: 0, y: 20 },
         { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: "power3.out" },
-        "<"
+        "<",
       )
       .fromTo(
         introDescSplit.chars,
         { opacity: 0 },
         { opacity: 1, duration: 0.4, stagger: 0.015, ease: "power2.out" },
-        "-=0.2"
+        "-=0.2",
       )
       .fromTo(
         ".intro-btns",
         { opacity: 0 },
         { opacity: 1, duration: 0.8, ease: "power3.out" },
-        "-=0.4"
+        "-=0.4",
       );
 
     function goToStep(direction: string | number) {
@@ -258,7 +260,9 @@ export default function HomePage() {
             "-=0.4",
           )
           .add(() => {
-            const dynamicBuiltSplit = new SplitText(".built-desc", { type: "words" });
+            const dynamicBuiltSplit = new SplitText(".built-desc", {
+              type: "words",
+            });
             gsap.set(dynamicBuiltSplit.words, { opacity: 0, y: 20 });
             gsap.set(".built-desc", { opacity: 1 });
             gsap.to(dynamicBuiltSplit.words, {
