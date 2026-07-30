@@ -117,61 +117,68 @@ function Navbar() {
       </button>
 
       {/* Mobile menu overlay */}
-      {mobileMenuOpen && (
-        <div className="absolute top-full left-0 right-0 mt-2 mx-0 bg-white border border-gray-200 rounded-2xl shadow-[0_8px_40px_-12px_rgba(0,0,0,0.15)] p-6 z-50 lg:hidden">
-          <ul className="flex flex-col gap-1">
-            {navRoutes.map((route: Route) => (
-              <li key={route.name}>
-                <Link
-                  href={route.url}
-                  className={clsx(
-                    "block px-4 py-3 text-base font-medium text-gray-700 rounded-xl hover:bg-gray-50 hover:text-gray-900 transition-colors no-underline font-medium p-2 rounded-lg hover:bg-accent-soft transition-[background-color]",
-                    { "bg-accent-soft": activeStep === route.step },
-                  )}
-                  onClick={(e) => {
-                    if (route.isAnchor && route.step !== undefined) {
-                      e.preventDefault();
-                      window.dispatchEvent(
-                        new CustomEvent("navToStep", {
-                          detail: { step: route.step },
-                        }),
-                      );
-                    }
-                    setMobileMenuOpen(false);
-                  }}
-                >
-                  {route.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <div className="mt-4 pt-4 border-t border-gray-100 flex flex-col gap-3">
-            <Link
-              href={actionRoutes.login}
-              className="w-full"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <Button
-                variant="ghost"
-                className="w-full text-black rounded-xl hover:text-accent hover:bg-transparent justify-center"
+      <div
+        className={clsx(
+          "absolute top-full left-0 right-0 mt-2 mx-0 bg-white border border-gray-200 rounded-2xl shadow-[0_8px_40px_-12px_rgba(0,0,0,0.15)] p-6 z-50 lg:hidden transition-all duration-300 origin-top",
+          {
+            "opacity-100 translate-y-0 pointer-events-auto": mobileMenuOpen,
+            "opacity-0 -translate-y-4 pointer-events-none": !mobileMenuOpen,
+          }
+        )}
+        aria-hidden={!mobileMenuOpen}
+      >
+        <ul className="flex flex-col gap-1">
+          {navRoutes.map((route: Route) => (
+            <li key={route.name}>
+              <Link
+                href={route.url}
+                className={clsx(
+                  "block px-4 py-3 text-base  text-gray-700  hover:text-gray-900 transition-colors no-underline font-medium p-2 rounded-lg hover:bg-accent-soft ",
+                  { "bg-accent-soft": activeStep === route.step },
+                )}
+                onClick={(e) => {
+                  if (route.isAnchor && route.step !== undefined) {
+                    e.preventDefault();
+                    window.dispatchEvent(
+                      new CustomEvent("navToStep", {
+                        detail: { step: route.step },
+                      }),
+                    );
+                  }
+                  setMobileMenuOpen(false);
+                }}
               >
-                Login
-              </Button>
-            </Link>
-            <Link
-              href={actionRoutes.signup}
-              className="w-full"
-              onClick={() => setMobileMenuOpen(false)}
+                {route.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <div className="mt-4 pt-4 border-t border-gray-100 flex flex-col gap-3">
+          <Link
+            href={actionRoutes.login}
+            className="w-full"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            <Button
+              variant="ghost"
+              className="w-full text-black rounded-xl hover:text-accent hover:bg-transparent justify-center"
             >
-              <Button className="w-full text-black transition-colors hover:text-white relative border rounded-xl shadow bg-white group overflow-hidden justify-center">
-                <p className="z-10">Get Started</p>
-                <ArrowRight className="z-10" />
-                <div className="absolute inset-0 bg-accent -translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
-              </Button>
-            </Link>
-          </div>
+              Login
+            </Button>
+          </Link>
+          <Link
+            href={actionRoutes.signup}
+            className="w-full"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            <Button className="w-full text-black transition-colors hover:text-white relative border rounded-xl shadow bg-white group overflow-hidden justify-center">
+              <p className="z-10">Get Started</p>
+              <ArrowRight className="z-10" />
+              <div className="absolute inset-0 bg-accent -translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
+            </Button>
+          </Link>
         </div>
-      )}
+      </div>
     </nav>
   );
 }
