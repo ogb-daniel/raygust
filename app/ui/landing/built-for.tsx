@@ -55,24 +55,10 @@ export default function BuiltFor() {
         </div>
 
         {/* Headline */}
-        <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.15]">
-          {"For teams, builders,".split(" ").map((word, i) => (
-            <span
-              key={`w1-${i}`}
-              className="built-word opacity-0 inline-block translate-y-[20px]"
-            >
-              {word}&nbsp;
-            </span>
-          ))}
+        <h2 className="built-title mt-6 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.15]">
+          For teams, builders,
           <br />
-          {"and everyone in between".split(" ").map((word, i) => (
-            <span
-              key={`w2-${i}`}
-              className="built-word opacity-0 inline-block translate-y-[20px]"
-            >
-              {word}&nbsp;
-            </span>
-          ))}
+          and everyone in between
         </h2>
 
         {/* Tabs */}
@@ -149,12 +135,8 @@ export default function BuiltFor() {
         </div>
 
         {/* Description text */}
-        <p className="mt-4 text-base sm:text-lg text-gray-600 leading-relaxed max-w-xl transition-all duration-300">
-          {tabs[activeTab].description.split(" ").map((word, i) => (
-            <span key={i} className="built-desc-word inline-block">
-              {word}&nbsp;
-            </span>
-          ))}
+        <p key={activeTab} className="built-desc mt-4 text-base sm:text-lg text-gray-600 leading-relaxed max-w-xl transition-all duration-300">
+          {tabs[activeTab].description}
         </p>
 
         <div className="built-btn opacity-0 translate-y-[20px] mt-6 sm:mt-8">

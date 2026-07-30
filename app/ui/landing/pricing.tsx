@@ -110,12 +110,8 @@ export default function Pricing() {
         </div>
 
         {/* Headline */}
-        <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.15]">
-          {"Explore plans".split(" ").map((word, i) => (
-            <span key={i} className="pricing-word inline-block">
-              {word}&nbsp;
-            </span>
-          ))}
+        <h2 className="pricing-title mt-6 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.15]">
+          Explore plans
         </h2>
 
         {/* Toggle */}

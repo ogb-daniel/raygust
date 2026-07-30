@@ -15,8 +15,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import Lenis from "lenis";
 import { Observer } from "gsap/Observer";
+import { SplitText } from "gsap/SplitText";
+
 if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger, SplitText);
 }
 interface GlobRef {
   height: number | undefined;
@@ -32,6 +34,26 @@ export default function HomePage() {
 
     let currentStep = 0;
     let isAnimating = false;
+
+    // Initialize SplitText
+    const featuresSplit = new SplitText(".features-title", { type: "words" });
+    const worksSplit = new SplitText(".works-title", { type: "words" });
+    const builtSplit = new SplitText(".built-title", { type: "words" });
+    const builtDescSplit = new SplitText(".built-desc", { type: "words" });
+    const pricingSplit = new SplitText(".pricing-title", { type: "words" });
+    const faqSplit = new SplitText(".faq-title", { type: "words" });
+
+    gsap.set(
+      [
+        featuresSplit.words,
+        worksSplit.words,
+        builtSplit.words,
+        builtDescSplit.words,
+        pricingSplit.words,
+        faqSplit.words,
+      ],
+      { opacity: 0, y: 20 }
+    );
 
     function goToStep(direction: string | number) {
       if (isAnimating) return;
@@ -96,7 +118,7 @@ export default function HomePage() {
           { opacity: 1, y: 0, duration: 0.8, delay: 0.8, ease: "power2.out" },
         );
         gsap.fromTo(
-          ".features-word",
+          featuresSplit.words,
           { opacity: 0, y: 20 },
           {
             opacity: 1,
@@ -118,7 +140,7 @@ export default function HomePage() {
 
         const tl = gsap.timeline({ delay: 1.0 });
         tl.fromTo(
-          ".works-word",
+          worksSplit.words,
           { opacity: 0, y: 20 },
           {
             opacity: 1,
@@ -169,7 +191,7 @@ export default function HomePage() {
 
         const tl = gsap.timeline({ delay: 1.0 });
         tl.fromTo(
-          ".built-word",
+          builtSplit.words,
           { opacity: 0, y: 20 },
           {
             opacity: 1,
@@ -199,7 +221,7 @@ export default function HomePage() {
             "-=0.4",
           )
           .fromTo(
-            ".built-desc-word",
+            builtDescSplit.words,
             { opacity: 0, y: 20 },
             {
               opacity: 1,
@@ -227,7 +249,7 @@ export default function HomePage() {
 
         const tl = gsap.timeline({ delay: 1.0 });
         tl.fromTo(
-          ".pricing-word",
+          pricingSplit.words,
           { opacity: 0, y: 20 },
           {
             opacity: 1,
@@ -272,7 +294,7 @@ export default function HomePage() {
 
         const tl = gsap.timeline({ delay: 1.0 });
         tl.fromTo(
-          ".faq-word",
+          faqSplit.words,
           { opacity: 0, y: 20 },
           {
             opacity: 1,

@@ -51,18 +51,10 @@ export default function FAQ() {
             <span className="section-header">FAQ</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.15]">
-            {"Frequently Asked".split(" ").map((word, i) => (
-              <span key={`w1-${i}`} className="faq-word inline-block">
-                {word}&nbsp;
-              </span>
-            ))}
+          <h2 className="faq-title text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.15]">
+            Frequently Asked
             <br />
-            {"Questions".split(" ").map((word, i) => (
-              <span key={`w2-${i}`} className="faq-word inline-block">
-                {word}&nbsp;
-              </span>
-            ))}
+            Questions
           </h2>
 
           <div className="mt-auto pt-12">

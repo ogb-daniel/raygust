@@ -62,15 +62,8 @@ export default function Features() {
       <div className="features-header opacity-0 inline-block translate-y-[20px]">
         <span className="section-header">Key Features</span>
       </div>
-      <h2 className={styles.heading}>
-        {"Intuitive and easy to use".split(" ").map((word, i) => (
-          <span
-            key={i}
-            className="features-word opacity-0 inline-block translate-y-[20px]"
-          >
-            {word}&nbsp;
-          </span>
-        ))}
+      <h2 className={clsx(styles.heading, "features-title")}>
+        Intuitive and easy to use
       </h2>
       <div className={styles.grid}>
         {features.map((feature) => (

@@ -19,24 +19,10 @@ export default function Works() {
             How It Works
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.15]">
-            {"Three steps to".split(" ").map((word, i) => (
-              <span
-                key={`w1-${i}`}
-                className="works-word opacity-0 inline-block translate-y-[20px]"
-              >
-                {word}&nbsp;
-              </span>
-            ))}
+          <h2 className="works-title text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.15]">
+            Three steps to
             <br />
-            {"smarter answers".split(" ").map((word, i) => (
-              <span
-                key={`w2-${i}`}
-                className="works-word opacity-0 inline-block translate-y-[20px]"
-              >
-                {word}&nbsp;
-              </span>
-            ))}
+            smarter answers
           </h2>
 
           <p className="works-desc opacity-0 translate-y-[20px] text-lg text-gray-600 leading-relaxed max-w-lg mt-2">
