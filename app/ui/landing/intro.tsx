@@ -7,20 +7,20 @@ import Link from "next/link";
 export default function Intro() {
   return (
     <section className="flex flex-col justify-center items-center text-center  flex-1 h-full px-6 md:px-12 lg:px-28">
-      <p className="uppercase rounded-2xl shadow w-fit py-2 px-3 flex items-center gap-2 sm:gap-4 section-header text-[10px] sm:text-xs">
+      <p className="intro-badge opacity-0 uppercase rounded-2xl shadow w-fit py-2 px-3 flex items-center gap-2 sm:gap-4 section-header text-[10px] sm:text-xs">
         <span className="hidden sm:inline">
           Meet Raygust: For businesses and developers
         </span>
         <span className="sm:hidden">Meet Raygust</span>
         <ArrowRight className="text-accent w-3.5 h-3.5 sm:w-4 sm:h-4" />
       </p>
-      <h1 className="mt-8 sm:mt-10 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
+      <h1 className="intro-title opacity-0 mt-8 sm:mt-10 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
         Chat with any document
       </h1>
-      <p className="mt-4 sm:mt-5 text-sm sm:text-base text-muted max-w-lg">
+      <p className="intro-desc opacity-0 mt-4 sm:mt-5 text-sm sm:text-base text-muted max-w-lg">
         Upload PDFs, Markdown, or web pages. Chat. Integrate in 3 lines of code.
       </p>
-      <div className="flex flex-col sm:flex-row items-center gap-4 mt-6 sm:mt-8 w-full sm:w-auto">
+      <div className="intro-btns opacity-0 flex flex-col sm:flex-row items-center gap-4 mt-6 sm:mt-8 w-full sm:w-auto">
         <Link href="/docs" className="w-full sm:w-auto">
           <Button
             variant="outline"

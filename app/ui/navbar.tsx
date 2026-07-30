@@ -45,7 +45,7 @@ function Navbar() {
     <nav
       ref={ref}
       className={clsx(
-        "flex justify-between items-center transition-all duration-300",
+        "flex justify-between items-center transition-[margin,padding,top,background-color,border-color,box-shadow,border-radius] duration-300",
         {
           "fixed top-5 left-0 right-0 z-50 mx-4 md:mx-8 lg:mx-28 bg-background border px-3 py-2 border-gray-200 rounded-xl shadow-[0_8px_40px_-12px_rgba(0,0,0,0.3)]":
             offScreen,

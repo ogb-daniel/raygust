@@ -36,6 +36,8 @@ export default function HomePage() {
     let isAnimating = false;
 
     // Initialize SplitText
+    const introTitleSplit = new SplitText(".intro-title", { type: "words" });
+    const introDescSplit = new SplitText(".intro-desc", { type: "words,chars" });
     const featuresSplit = new SplitText(".features-title", { type: "words" });
     const worksSplit = new SplitText(".works-title", { type: "words" });
     const builtSplit = new SplitText(".built-title", { type: "words" });
@@ -43,8 +45,10 @@ export default function HomePage() {
     const pricingSplit = new SplitText(".pricing-title", { type: "words" });
     const faqSplit = new SplitText(".faq-title", { type: "words" });
 
+    gsap.set([".intro-title", ".intro-desc"], { opacity: 1 });
     gsap.set(
       [
+        introTitleSplit.words,
         featuresSplit.words,
         worksSplit.words,
         builtSplit.words,
@@ -54,6 +58,39 @@ export default function HomePage() {
       ],
       { opacity: 0, y: 20 }
     );
+    gsap.set(introDescSplit.chars, { opacity: 0 });
+
+    const initialTl = gsap.timeline({ delay: 0.2 });
+    initialTl
+      .fromTo(
+        "nav",
+        { y: -50, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }
+      )
+      .fromTo(
+        ".intro-badge",
+        { opacity: 0 },
+        { opacity: 1, duration: 0.8, ease: "power3.out" },
+        "-=0.4"
+      )
+      .fromTo(
+        introTitleSplit.words,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: "power3.out" },
+        "<"
+      )
+      .fromTo(
+        introDescSplit.chars,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.4, stagger: 0.015, ease: "power2.out" },
+        "-=0.2"
+      )
+      .fromTo(
+        ".intro-btns",
+        { opacity: 0 },
+        { opacity: 1, duration: 0.8, ease: "power3.out" },
+        "-=0.4"
+      );
 
     function goToStep(direction: string | number) {
       if (isAnimating) return;
