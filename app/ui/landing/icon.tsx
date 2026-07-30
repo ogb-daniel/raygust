@@ -20,7 +20,7 @@ export default function Icon({ src, alt = "", symbol }: IconProps) {
       <Image
         src={src}
         alt={alt}
-        className="w-28 h-6 object-contain object-left grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+        className="max-w-28 w-full h-6 object-contain object-left grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
       />
     </div>
   );

@@ -23,17 +23,16 @@ export default function Powered({ ref }: PoweredProps) {
   return (
     <section
       ref={poweredRef}
-      className="flex flex-col logo-item md:flex-row justify-between items-center gap-8 md:gap-6 px-6 md:px-12 lg:px-28 "
+      className="flex flex-col logo-item lg:flex-row justify-between items-center gap-8 lg:gap-12 px-6 md:px-12 lg:px-28"
     >
-      <p className="text-muted text-center md:text-left text-nowrap ">
+      <p className="text-muted text-center lg:text-left text-nowrap shrink-0">
         Powered by
       </p>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 items-center gap-5">
+      <div className="flex flex-wrap items-center justify-center md:justify-end gap-6 sm:gap-8 md:gap-10 w-full">
         <Icon src={anthropicLogo} alt="Anthropic" symbol={anthropicSymbol} />
         <Icon src={openaiLogo} alt="OpenAI" symbol={openaiSymbol} />
         <Icon src={langchainLogo} alt="LangChain" />
         <Icon src={qdrantLogo} alt="Qdrant" />
-        <Icon src={redisLogo} alt="Redis" symbol={redisSymbol} />
       </div>
     </section>
   );
