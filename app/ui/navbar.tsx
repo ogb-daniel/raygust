@@ -12,6 +12,7 @@ function Navbar() {
   const ref = useRef<HTMLElement>(null);
   const [offScreen, setOffScreen] = useState<boolean>(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeStep, setActiveStep] = useState<number>(0);
 
   const handleEl = () => {
     const rect = ref.current!.getBoundingClientRect();
@@ -23,8 +24,8 @@ function Navbar() {
   useEffect(() => {
     const handleVirtualScroll = (e: Event) => {
       const customEvent = e as CustomEvent<{ step: number }>;
-
       setOffScreen(customEvent.detail.step > 0);
+      setActiveStep(customEvent.detail.step);
     };
     window.addEventListener("virtualScroll", handleVirtualScroll);
     return () =>
@@ -49,7 +50,8 @@ function Navbar() {
         {
           "fixed top-5 left-0 right-0 z-50 mx-4 md:mx-8 lg:mx-28 bg-background border px-3 py-2 border-gray-200 rounded-xl shadow-[0_8px_40px_-12px_rgba(0,0,0,0.3)]":
             offScreen,
-          "absolute top-0 left-0 right-0 z-50 py-6 mx-4 md:mx-8 lg:mx-16 border-none": !offScreen,
+          "absolute top-0 left-0 right-0 z-50 py-6 mx-4 md:mx-8 lg:mx-16 border-none":
+            !offScreen,
         },
       )}
     >
@@ -58,17 +60,20 @@ function Navbar() {
       {/* Desktop nav links */}
       <ul className="hidden lg:flex gap-6 text-center">
         {navRoutes.map((route: Route) => (
-          <li key={route.name} className="font-medium">
+          <li key={route.name}>
             <Link
               href={route.url}
-              className="text-black"
+              className={clsx(
+                "text-black font-medium p-2 rounded-lg hover:bg-accent-soft transition-[background-color]",
+                { "bg-accent-soft": activeStep === route.step },
+              )}
               onClick={(e) => {
                 if (route.isAnchor && route.step !== undefined) {
                   e.preventDefault();
                   window.dispatchEvent(
                     new CustomEvent("navToStep", {
                       detail: { step: route.step },
-                    })
+                    }),
                   );
                 }
               }}
@@ -119,14 +124,17 @@ function Navbar() {
               <li key={route.name}>
                 <Link
                   href={route.url}
-                  className="block px-4 py-3 text-base font-medium text-gray-700 rounded-xl hover:bg-gray-50 hover:text-gray-900 transition-colors no-underline"
+                  className={clsx(
+                    "block px-4 py-3 text-base font-medium text-gray-700 rounded-xl hover:bg-gray-50 hover:text-gray-900 transition-colors no-underline font-medium p-2 rounded-lg hover:bg-accent-soft transition-[background-color]",
+                    { "bg-accent-soft": activeStep === route.step },
+                  )}
                   onClick={(e) => {
                     if (route.isAnchor && route.step !== undefined) {
                       e.preventDefault();
                       window.dispatchEvent(
                         new CustomEvent("navToStep", {
                           detail: { step: route.step },
-                        })
+                        }),
                       );
                     }
                     setMobileMenuOpen(false);
@@ -138,7 +146,11 @@ function Navbar() {
             ))}
           </ul>
           <div className="mt-4 pt-4 border-t border-gray-100 flex flex-col gap-3">
-            <Link href={actionRoutes.login} className="w-full" onClick={() => setMobileMenuOpen(false)}>
+            <Link
+              href={actionRoutes.login}
+              className="w-full"
+              onClick={() => setMobileMenuOpen(false)}
+            >
               <Button
                 variant="ghost"
                 className="w-full text-black rounded-xl hover:text-accent hover:bg-transparent justify-center"
@@ -146,7 +158,11 @@ function Navbar() {
                 Login
               </Button>
             </Link>
-            <Link href={actionRoutes.signup} className="w-full" onClick={() => setMobileMenuOpen(false)}>
+            <Link
+              href={actionRoutes.signup}
+              className="w-full"
+              onClick={() => setMobileMenuOpen(false)}
+            >
               <Button className="w-full text-black transition-colors hover:text-white relative border rounded-xl shadow bg-white group overflow-hidden justify-center">
                 <p className="z-10">Get Started</p>
                 <ArrowRight className="z-10" />
