@@ -34,6 +34,7 @@ export default function HomePage() {
 
     let currentStep = 0;
     let isAnimating = false;
+    const animatedSteps = new Set<number>([0]);
 
     // Initialize SplitText
     const introTitleSplit = new SplitText(".intro-title", { type: "words" });
@@ -141,7 +142,10 @@ export default function HomePage() {
         ease: "power3.inOut",
       });
 
-      if (nextStep === 1 && currentStep === 0) {
+      if (!animatedSteps.has(nextStep)) {
+        animatedSteps.add(nextStep);
+
+        if (nextStep === 1 && currentStep === 0) {
         gsap.fromTo(
           ".logo-item",
           { opacity: 0, y: 20 },
@@ -408,6 +412,7 @@ export default function HomePage() {
             { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
             "-=0.8",
           );
+        }
       }
 
       currentStep = nextStep;
