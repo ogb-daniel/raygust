@@ -163,11 +163,15 @@ export default function BuiltFor() {
             </div>
 
             {/* Floating accent orbs - scaled down on mobile */}
-            <div className="built-orb opacity-0 scale-0 absolute left-[8%] bottom-[15%] w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] lg:w-[90px] lg:h-[90px] rounded-full bg-accent opacity-90" />
-            <div className="built-orb opacity-0 scale-0 absolute left-[18%] top-[5%] w-[25px] h-[25px] sm:w-[35px] sm:h-[35px] lg:w-[50px] lg:h-[50px] rounded-full bg-accent opacity-80" />
-            <div className="built-orb opacity-0 scale-0 absolute left-[38%] bottom-[22%] w-[35px] h-[35px] sm:w-[50px] sm:h-[50px] lg:w-[75px] lg:h-[75px] rounded-full bg-accent opacity-85" />
-            <div className="built-orb opacity-0 scale-0 absolute right-[25%] top-[2%] w-[30px] h-[30px] sm:w-[45px] sm:h-[45px] lg:w-[65px] lg:h-[65px] rounded-full bg-gradient-to-br from-accent via-pink-400 to-blue-400 opacity-90" />
-            <div className="built-orb opacity-0 scale-0 absolute right-[8%] top-[8%] w-[25px] h-[25px] sm:w-[38px] sm:h-[38px] lg:w-[55px] lg:h-[55px] rounded-full bg-accent opacity-80" />
+            {/* <div className="built-orb scale-0 absolute left-[8%] bottom-[15%] w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] lg:w-[90px] lg:h-[90px] rounded-full bg-accent opacity-90" />
+            <div className="built-orb scale-0 absolute left-[18%] top-[5%] w-[25px] h-[25px] sm:w-[35px] sm:h-[35px] lg:w-[50px] lg:h-[50px] rounded-full bg-accent opacity-80" />
+            <div className="built-orb scale-0 absolute left-[38%] bottom-[22%] w-[35px] h-[35px] sm:w-[50px] sm:h-[50px] lg:w-[75px] lg:h-[75px] rounded-full bg-accent opacity-85" /> */}
+            {/* <div className="built-orb scale-0 absolute left-[8%] bottom-[15%] w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] lg:w-[90px] lg:h-[90px] rounded-full bg-gradient-to-br from-pink-300 via-purple-200 to-blue-300 opacity-70 blur-[1px]" /> */}
+            <div className="built-orb scale-0 absolute left-[18%] top-[5%] w-[25px] h-[25px] sm:w-[35px] sm:h-[35px] lg:w-[50px] lg:h-[50px] rounded-full bg-gradient-to-br from-pink-300 via-purple-200 to-blue-300 opacity-70 blur-[1px]" />
+            <div className="built-orb scale-0 absolute left-[38%] bottom-[22%] w-[35px] h-[35px] sm:w-[50px] sm:h-[50px] lg:w-[75px] lg:h-[75px] rounded-full bg-gradient-to-br from-pink-300 via-purple-200 to-blue-300 opacity-70 blur-[1px]" />
+
+            <div className="built-orb opacity-0 scale-0 absolute right-[25%] top-[2%] w-[30px] h-[30px] sm:w-[45px] sm:h-[45px] lg:w-[65px] lg:h-[65px] rounded-full bg-gradient-to-br from-pink-300 via-purple-200 to-blue-300 opacity-70 blur-[1px]" />
+            <div className="built-orb scale-0 absolute right-[8%] top-[8%] w-[25px] h-[25px] sm:w-[38px] sm:h-[38px] lg:w-[55px] lg:h-[55px] rounded-full bg-gradient-to-br from-pink-300 via-purple-200 to-blue-300 opacity-70 blur-[1px]" />
 
             {/* Small iridescent orb */}
             <div className="built-orb opacity-0 scale-0 absolute left-[40%] top-[2%] w-[20px] h-[20px] sm:w-[30px] sm:h-[30px] lg:w-[40px] lg:h-[40px] rounded-full bg-gradient-to-br from-pink-300 via-purple-200 to-blue-300 opacity-70 blur-[1px]" />
