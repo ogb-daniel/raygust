@@ -36,18 +36,21 @@ export default function BuiltFor() {
   const [activeTab, setActiveTab] = useState(0);
   const isFirstRender = useRef(true);
 
-  useGSAP(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
-    const split = new SplitText(".built-desc", { type: "words" });
-    gsap.fromTo(
-      split.words,
-      { opacity: 0, y: 10 },
-      { opacity: 1, y: 0, duration: 0.4, stagger: 0.015, ease: "power2.out" }
-    );
-  }, { dependencies: [activeTab], revertOnUpdate: true });
+  useGSAP(
+    () => {
+      if (isFirstRender.current) {
+        isFirstRender.current = false;
+        return;
+      }
+      const split = new SplitText(".built-desc", { type: "words" });
+      gsap.fromTo(
+        split.words,
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.4, stagger: 0.015, ease: "power2.out" },
+      );
+    },
+    { dependencies: [activeTab], revertOnUpdate: true },
+  );
 
   return (
     <section className="py-28 overflow-hidden bg-white relative">
@@ -99,52 +102,62 @@ export default function BuiltFor() {
         <div className="relative w-full mt-10 sm:mt-12 h-[220px] sm:h-[300px] md:h-[350px] lg:h-[420px] flex items-center justify-center overflow-hidden">
           {/* Circular images + floating orbs */}
           <div className="relative z-[2] w-full max-w-4xl h-full">
-            {/* Image circle 1 - Top Left */}
+            {/* Image circle 1 - Top Left (Business Teams) */}
             <div className="built-orb opacity-0 scale-0 absolute left-[20%] top-[10%] w-[80px] h-[80px] sm:w-[120px] sm:h-[120px] md:w-[160px] md:h-[160px] lg:w-[190px] lg:h-[190px] z-[1]">
               <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105 hover:z-[10] relative">
                 <div
                   className="w-full h-full bg-cover bg-center"
-                  style={{ backgroundImage: `url('https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/2f563338-39fa-47ea-9761-658d4f3f84db_1600w.jpg')` }}
+                  style={{
+                    backgroundImage: `url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80')`,
+                  }}
                 />
               </div>
             </div>
 
-            {/* Image circle 2 - Top Center */}
+            {/* Image circle 2 - Top Center (Customer Support) */}
             <div className="built-orb opacity-0 scale-0 absolute left-[40%] top-[10%] w-[80px] h-[80px] sm:w-[120px] sm:h-[120px] md:w-[160px] md:h-[160px] lg:w-[190px] lg:h-[190px] z-[1]">
               <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105 hover:z-[10] relative">
                 <div
                   className="w-full h-full bg-cover bg-center"
-                  style={{ backgroundImage: `url('https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/4f5668c5-fc4a-44e0-bc5e-a664189d3c31_1600w.jpg')` }}
+                  style={{
+                    backgroundImage: `url('https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=800&q=80')`,
+                  }}
                 />
               </div>
             </div>
 
-            {/* Image circle 3 - Top Right */}
+            {/* Image circle 3 - Top Right (Developers) */}
             <div className="built-orb opacity-0 scale-0 absolute left-[60%] top-[10%] w-[80px] h-[80px] sm:w-[120px] sm:h-[120px] md:w-[160px] md:h-[160px] lg:w-[190px] lg:h-[190px] z-[1]">
               <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105 hover:z-[10] relative">
                 <div
-                  className="w-full h-full bg-cover bg-[center_top] sm:bg-center"
-                  style={{ backgroundImage: `url('https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/eca707cc-a5b7-439a-b4fd-247f6106c2e1_1600w.jpg')` }}
+                  className="w-full h-full bg-cover bg-center"
+                  style={{
+                    backgroundImage: `url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80')`,
+                  }}
                 />
               </div>
             </div>
 
-            {/* Image circle 4 - Bottom Left */}
+            {/* Image circle 4 - Bottom Left (Agencies & Consultants) */}
             <div className="built-orb opacity-0 scale-0 absolute left-[30%] top-[45%] w-[80px] h-[80px] sm:w-[120px] sm:h-[120px] md:w-[160px] md:h-[160px] lg:w-[190px] lg:h-[190px] z-[2]">
               <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105 hover:z-[10] relative">
                 <div
-                  className="w-full h-full bg-cover bg-[center_top_20%] sm:bg-center"
-                  style={{ backgroundImage: `url('https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/77415a2e-dcbc-4748-a29d-fced4821881a_1600w.jpg')` }}
+                  className="w-full h-full bg-cover bg-center"
+                  style={{
+                    backgroundImage: `url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80')`,
+                  }}
                 />
               </div>
             </div>
 
-            {/* Image circle 5 - Bottom Right */}
+            {/* Image circle 5 - Bottom Right (Collaboration / Everyone) */}
             <div className="built-orb opacity-0 scale-0 absolute left-[50%] top-[45%] w-[80px] h-[80px] sm:w-[120px] sm:h-[120px] md:w-[160px] md:h-[160px] lg:w-[190px] lg:h-[190px] z-[2]">
               <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105 hover:z-[10] relative">
                 <div
                   className="w-full h-full bg-cover bg-center"
-                  style={{ backgroundImage: `url('https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/c92852bb-a510-405a-85ab-ffa0fde136a4_1600w.jpg')` }}
+                  style={{
+                    backgroundImage: `url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80')`,
+                  }}
                 />
               </div>
             </div>
@@ -162,7 +175,10 @@ export default function BuiltFor() {
         </div>
 
         {/* Description text */}
-        <p key={activeTab} className="built-desc mt-4 text-base sm:text-lg text-gray-600 leading-relaxed max-w-xl">
+        <p
+          key={activeTab}
+          className="built-desc mt-4 text-base sm:text-lg text-gray-600 leading-relaxed max-w-xl"
+        >
           {tabs[activeTab].description}
         </p>
 
