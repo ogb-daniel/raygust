@@ -146,251 +146,246 @@ export default function HomePage() {
         animatedSteps.add(nextStep);
 
         if (nextStep === 1 && currentStep === 0) {
-        gsap.fromTo(
-          ".logo-item",
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.8, delay: 0.8, ease: "power2.out" },
-        );
-      }
-
-      if (nextStep === 2) {
-        gsap.fromTo(
-          ".features-header",
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.8, delay: 0.8, ease: "power2.out" },
-        );
-        gsap.fromTo(
-          featuresSplit.words,
-          { opacity: 0, y: 20 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            delay: 1,
-            stagger: 0.1,
-            ease: "power2.out",
-          },
-        );
-      }
-
-      if (nextStep === 3) {
-        gsap.fromTo(
-          ".works-header",
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.8, delay: 0.8, ease: "power3.out" },
-        );
-
-        const tl = gsap.timeline({ delay: 1.0 });
-        tl.fromTo(
-          worksSplit.words,
-          { opacity: 0, y: 20 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            stagger: 0.05,
-            ease: "power3.out",
-          },
-        )
-          .fromTo(
-            ".works-desc",
+          gsap.fromTo(
+            ".logo-item",
             { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
-            "-=0.4",
-          )
-          .fromTo(
-            ".works-grid",
-            { opacity: 0, x: -30 },
-            { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" },
-            "-=0.4",
-          )
-          .fromTo(
-            ".works-bg",
-            { opacity: 0 },
-            { opacity: 1, duration: 0.6, ease: "power3.out" },
-            "-=0.4",
-          )
-          .fromTo(
-            ".works-ui",
-            { opacity: 0, y: 40 },
-            { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
-            "-=0.6",
-          )
-          .fromTo(
-            ".works-btn",
-            { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
-            "-=0.2",
+            { opacity: 1, y: 0, duration: 0.8, delay: 0.8, ease: "power2.out" },
           );
-      }
+        }
 
-      if (nextStep === 4) {
-        gsap.set(".built-desc", { opacity: 0 });
-        gsap.fromTo(
-          ".built-header",
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.8, delay: 0.8, ease: "power3.out" },
-        );
-
-        const tl = gsap.timeline({ delay: 1.0 });
-        tl.fromTo(
-          builtSplit.words,
-          { opacity: 0, y: 20 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            stagger: 0.05,
-            ease: "power3.out",
-          },
-        )
-          .fromTo(
-            ".built-tabs",
-            { opacity: 0, x: -30 },
-            { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" },
-            "-=0.4",
-          )
-          .fromTo(
-            ".built-orb",
-            { opacity: 0, scale: 0, rotation: -180 },
+        if (nextStep === 2) {
+          gsap.fromTo(
+            ".features-header",
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.8, delay: 0.8, ease: "power2.out" },
+          );
+          gsap.fromTo(
+            featuresSplit.words,
+            { opacity: 0, y: 20 },
             {
-              opacity: 1,
-              scale: 1,
-              rotation: 0,
-              duration: 0.8,
-              stagger: 0.05,
-              ease: "back.out(1.2)",
-            },
-            "-=0.4",
-          )
-          .add(() => {
-            const dynamicBuiltSplit = new SplitText(".built-desc", {
-              type: "words",
-            });
-            gsap.set(dynamicBuiltSplit.words, { opacity: 0, y: 20 });
-            gsap.set(".built-desc", { opacity: 1 });
-            gsap.to(dynamicBuiltSplit.words, {
               opacity: 1,
               y: 0,
               duration: 0.6,
-              stagger: 0.02,
-              ease: "power3.out",
-            });
-          }, "-=0.6")
-          .fromTo(
-            ".built-btn",
+              delay: 1,
+              stagger: 0.1,
+              ease: "power2.out",
+            },
+          );
+        }
+
+        if (nextStep === 3) {
+          gsap.fromTo(
+            ".works-header",
             { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
-            "-=0.2",
+            { opacity: 1, y: 0, duration: 0.8, delay: 0.8, ease: "power3.out" },
           );
-      }
 
-      if (nextStep === 5) {
-        gsap.fromTo(
-          ".pricing-header",
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.8, delay: 0.8, ease: "power3.out" },
-        );
-
-        const tl = gsap.timeline({ delay: 1.0 });
-        tl.fromTo(
-          pricingSplit.words,
-          { opacity: 0, y: 20 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            stagger: 0.05,
-            ease: "power3.out",
-          },
-        )
-          .fromTo(
-            ".pricing-toggle",
-            { opacity: 0, x: -30 },
-            { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" },
-            "-=0.4",
-          )
-          .fromTo(
-            ".pricing-card-0",
-            { opacity: 0, y: 80 },
-            { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
-            "-=0.4",
-          )
-          .fromTo(
-            ".pricing-card-2",
-            { opacity: 0, y: 80 },
-            { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
-            "-=0.7",
-          )
-          .fromTo(
-            ".pricing-card-1",
-            { opacity: 0, y: 80 },
-            { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
-            "-=0.7",
-          );
-      }
-
-      if (nextStep === 6) {
-        gsap.fromTo(
-          ".faq-header",
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.8, delay: 0.8, ease: "power3.out" },
-        );
-
-        const tl = gsap.timeline({ delay: 1.0 });
-        tl.fromTo(
-          faqSplit.words,
-          { opacity: 0, y: 20 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            stagger: 0.05,
-            ease: "power3.out",
-          },
-        )
-          .fromTo(
-            ".faq-item",
-            { opacity: 0, x: -80 },
+          const tl = gsap.timeline({ delay: 1.0 });
+          tl.fromTo(
+            worksSplit.words,
+            { opacity: 0, y: 20 },
             {
               opacity: 1,
-              x: 0,
-              duration: 0.8,
+              y: 0,
+              duration: 0.6,
               stagger: 0.05,
               ease: "power3.out",
             },
-            "-=0.4",
           )
-          .fromTo(
-            ".faq-desc",
+            .fromTo(
+              ".works-desc",
+              { opacity: 0, y: 20 },
+              { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
+              "-=0.4",
+            )
+            .fromTo(
+              ".works-grid",
+              { opacity: 0, x: -30 },
+              { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" },
+              "-=0.4",
+            )
+            .fromTo(
+              ".works-bg",
+              { opacity: 0 },
+              { opacity: 1, duration: 0.6, ease: "power3.out" },
+              "-=0.4",
+            )
+            .fromTo(
+              ".works-ui",
+              { opacity: 0, y: 40 },
+              { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+              "-=0.6",
+            )
+            .fromTo(
+              ".works-btn",
+              { opacity: 0, y: 20 },
+              { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
+              "-=0.2",
+            );
+        }
+
+        if (nextStep === 4) {
+          gsap.set(".built-desc", { opacity: 0 });
+          gsap.fromTo(
+            ".built-header",
             { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
-            "-=0.4",
-          )
-          .fromTo(
-            ".faq-btn",
-            { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
-            "-=0.4",
+            { opacity: 1, y: 0, duration: 0.8, delay: 0.8, ease: "power3.out" },
           );
-      }
 
-      if (nextStep === 7) {
-        gsap.fromTo(
-          ".footer-newsletter",
-          { opacity: 0, y: 40 },
-          { opacity: 1, y: 0, duration: 0.8, delay: 0.8, ease: "power3.out" },
-        );
+          const tl = gsap.timeline({ delay: 1.0 });
+          tl.fromTo(
+            builtSplit.words,
+            { opacity: 0, y: 20 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.6,
+              stagger: 0.05,
+              ease: "power3.out",
+            },
+          )
+            .fromTo(
+              ".built-tabs",
+              { opacity: 0, x: -30 },
+              { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" },
+              "-=0.4",
+            )
+            .fromTo(
+              ".built-orb",
+              { opacity: 0, scale: 0, rotation: -180 },
+              {
+                opacity: 1,
+                scale: 1,
+                rotation: 0,
+                duration: 0.8,
+                stagger: 0.05,
+                ease: "back.out(1.2)",
+              },
+              "-=0.4",
+            )
+            .add(() => {
+              const dynamicBuiltSplit = new SplitText(".built-desc", {
+                type: "words",
+              });
+              gsap.set(dynamicBuiltSplit.words, { opacity: 0, y: 20 });
+              gsap.set(".built-desc", { opacity: 1 });
+              gsap.to(dynamicBuiltSplit.words, {
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                stagger: 0.02,
+                ease: "power3.out",
+              });
+            }, "-=0.6")
+            .fromTo(
+              ".built-btn",
+              { opacity: 0, y: 20 },
+              { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
+              "-=0.2",
+            );
+        }
 
-        const tl = gsap.timeline({ delay: 1.0 });
-        tl.fromTo(
-          [".footer-card-Product", ".footer-card-Support"],
-          { opacity: 0, y: 40 },
-          { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "power3.out" },
-        )
-          .fromTo(
-            [".footer-card-Company", ".footer-card-Resources"],
-            { opacity: 0, y: -40 },
+        if (nextStep === 5) {
+          gsap.fromTo(
+            ".pricing-header",
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.8, delay: 0.8, ease: "power3.out" },
+          );
+
+          const tl = gsap.timeline({ delay: 1.0 });
+          tl.fromTo(
+            pricingSplit.words,
+            { opacity: 0, y: 20 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.6,
+              stagger: 0.05,
+              ease: "power3.out",
+            },
+          )
+            .fromTo(
+              ".pricing-toggle",
+              { opacity: 0, x: -30 },
+              { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" },
+              "-=0.4",
+            )
+            .fromTo(
+              ".pricing-card-0",
+              { opacity: 0, y: 80 },
+              { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
+              "-=0.4",
+            )
+            .fromTo(
+              ".pricing-card-2",
+              { opacity: 0, y: 80 },
+              { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
+              "-=0.7",
+            )
+            .fromTo(
+              ".pricing-card-1",
+              { opacity: 0, y: 80 },
+              { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
+              "-=0.7",
+            );
+        }
+
+        if (nextStep === 6) {
+          gsap.fromTo(
+            ".faq-header",
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.8, delay: 0.8, ease: "power3.out" },
+          );
+
+          const tl = gsap.timeline({ delay: 1.0 });
+          tl.fromTo(
+            faqSplit.words,
+            { opacity: 0, y: 20 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.6,
+              stagger: 0.05,
+              ease: "power3.out",
+            },
+          )
+            .fromTo(
+              ".faq-item",
+              { opacity: 0, x: -80 },
+              {
+                opacity: 1,
+                x: 0,
+                duration: 0.8,
+                stagger: 0.05,
+                ease: "power3.out",
+              },
+              "-=0.4",
+            )
+            .fromTo(
+              ".faq-desc",
+              { opacity: 0, y: 20 },
+              { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
+              "-=0.4",
+            )
+            .fromTo(
+              ".faq-btn",
+              { opacity: 0, y: 20 },
+              { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
+              "-=0.4",
+            );
+        }
+
+        if (nextStep === 7) {
+          gsap.fromTo(
+            ".footer-newsletter",
+            { opacity: 0, y: 40 },
+            { opacity: 1, y: 0, duration: 0.8, delay: 0.8, ease: "power3.out" },
+          );
+
+          const tl = gsap.timeline({ delay: 1.0 });
+          tl.fromTo(
+            [".footer-card-Product", ".footer-card-Support"],
+            { opacity: 0, y: 40 },
             {
               opacity: 1,
               y: 0,
@@ -398,20 +393,31 @@ export default function HomePage() {
               stagger: 0.1,
               ease: "power3.out",
             },
-            "-=0.6",
           )
-          .fromTo(
-            ".footer-watermark",
-            { opacity: 0, x: -200 },
-            { opacity: 1, x: 0, duration: 1.2, ease: "power3.out" },
-            "-=0.4",
-          )
-          .fromTo(
-            ".footer-bottom",
-            { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
-            "-=0.8",
-          );
+            .fromTo(
+              [".footer-card-Company", ".footer-card-Resources"],
+              { opacity: 0, y: -40 },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                stagger: 0.1,
+                ease: "power3.out",
+              },
+              "-=0.6",
+            )
+            .fromTo(
+              ".footer-watermark",
+              { opacity: 0, x: -200 },
+              { opacity: 1, x: 0, duration: 1.2, ease: "power3.out" },
+              "-=0.4",
+            )
+            .fromTo(
+              ".footer-bottom",
+              { opacity: 0, y: 20 },
+              { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
+              "-=0.8",
+            );
         }
       }
 
