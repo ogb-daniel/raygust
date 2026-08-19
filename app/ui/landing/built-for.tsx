@@ -99,43 +99,53 @@ export default function BuiltFor() {
         <div className="relative w-full mt-10 sm:mt-12 h-[220px] sm:h-[300px] md:h-[350px] lg:h-[420px] flex items-center justify-center overflow-hidden">
           {/* Circular images + floating orbs */}
           <div className="relative z-[2] w-full max-w-4xl h-full">
-            {/* Image circle 1 - left */}
-            <div className="built-orb opacity-0 scale-0 absolute left-[2%] top-[18%] w-[80px] h-[80px] sm:w-[120px] sm:h-[120px] md:w-[150px] md:h-[150px] lg:w-[180px] lg:h-[180px]">
-              <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105">
+            {/* Image circle 1 - Top Left */}
+            <div className="built-orb opacity-0 scale-0 absolute left-[20%] top-[10%] w-[80px] h-[80px] sm:w-[120px] sm:h-[120px] md:w-[160px] md:h-[160px] lg:w-[190px] lg:h-[190px] z-[1]">
+              <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105 hover:z-[10] relative">
                 <div
-                  // style={{
-                  //   backgroundImage: `url('https://static.vecteezy.com/vite/assets/photo-masthead-375-BoK_p8LG.webp')`,
-                  // }}
-                  className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 bg-cover bg-center"
+                  className="w-full h-full bg-cover bg-center"
+                  style={{ backgroundImage: `url('https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/2f563338-39fa-47ea-9761-658d4f3f84db_1600w.jpg')` }}
                 />
               </div>
             </div>
 
-            {/* Image circle 2 - center-left */}
-            <div className="built-orb opacity-0 scale-0 absolute left-[22%] top-[8%] w-[90px] h-[90px] sm:w-[130px] sm:h-[130px] md:w-[170px] md:h-[170px] lg:w-[200px] lg:h-[200px]">
-              <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105">
-                <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400" />
+            {/* Image circle 2 - Top Center */}
+            <div className="built-orb opacity-0 scale-0 absolute left-[40%] top-[10%] w-[80px] h-[80px] sm:w-[120px] sm:h-[120px] md:w-[160px] md:h-[160px] lg:w-[190px] lg:h-[190px] z-[1]">
+              <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105 hover:z-[10] relative">
+                <div
+                  className="w-full h-full bg-cover bg-center"
+                  style={{ backgroundImage: `url('https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/4f5668c5-fc4a-44e0-bc5e-a664189d3c31_1600w.jpg')` }}
+                />
               </div>
             </div>
 
-            {/* Image circle 3 - center */}
-            <div className="built-orb opacity-0 scale-0 absolute left-[42%] top-[14%] w-[85px] h-[85px] sm:w-[125px] sm:h-[125px] md:w-[160px] md:h-[160px] lg:w-[190px] lg:h-[190px]">
-              <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105">
-                <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-350" />
+            {/* Image circle 3 - Top Right */}
+            <div className="built-orb opacity-0 scale-0 absolute left-[60%] top-[10%] w-[80px] h-[80px] sm:w-[120px] sm:h-[120px] md:w-[160px] md:h-[160px] lg:w-[190px] lg:h-[190px] z-[1]">
+              <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105 hover:z-[10] relative">
+                <div
+                  className="w-full h-full bg-cover bg-[center_top] sm:bg-center"
+                  style={{ backgroundImage: `url('https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/eca707cc-a5b7-439a-b4fd-247f6106c2e1_1600w.jpg')` }}
+                />
               </div>
             </div>
 
-            {/* Image circle 4 - center-right */}
-            <div className="built-orb opacity-0 scale-0 absolute right-[18%] top-[6%] w-[82px] h-[82px] sm:w-[120px] sm:h-[120px] md:w-[155px] md:h-[155px] lg:w-[185px] lg:h-[185px]">
-              <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105">
-                <div className="w-full h-full bg-gradient-to-br from-gray-250 to-gray-400" />
+            {/* Image circle 4 - Bottom Left */}
+            <div className="built-orb opacity-0 scale-0 absolute left-[30%] top-[45%] w-[80px] h-[80px] sm:w-[120px] sm:h-[120px] md:w-[160px] md:h-[160px] lg:w-[190px] lg:h-[190px] z-[2]">
+              <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105 hover:z-[10] relative">
+                <div
+                  className="w-full h-full bg-cover bg-[center_top_20%] sm:bg-center"
+                  style={{ backgroundImage: `url('https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/77415a2e-dcbc-4748-a29d-fced4821881a_1600w.jpg')` }}
+                />
               </div>
             </div>
 
-            {/* Image circle 5 - right */}
-            <div className="built-orb opacity-0 scale-0 absolute right-[0%] top-[20%] w-[75px] h-[75px] sm:w-[110px] sm:h-[110px] md:w-[140px] md:h-[140px] lg:w-[170px] lg:h-[170px]">
-              <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105">
-                <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400" />
+            {/* Image circle 5 - Bottom Right */}
+            <div className="built-orb opacity-0 scale-0 absolute left-[50%] top-[45%] w-[80px] h-[80px] sm:w-[120px] sm:h-[120px] md:w-[160px] md:h-[160px] lg:w-[190px] lg:h-[190px] z-[2]">
+              <div className="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-500 hover:scale-105 hover:z-[10] relative">
+                <div
+                  className="w-full h-full bg-cover bg-center"
+                  style={{ backgroundImage: `url('https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/c92852bb-a510-405a-85ab-ffa0fde136a4_1600w.jpg')` }}
+                />
               </div>
             </div>
 
