@@ -1,4 +1,5 @@
 import type { components } from "@/lib/api-types";
+import { getTokenCookie } from "@/lib/auth/cookies";
 
 export type UserResponse = components["schemas"]["UserResponse"];
 export type UserCreate = components["schemas"]["UserCreate"];
@@ -6,6 +7,7 @@ export type UserLogin = components["schemas"]["UserLogin"];
 export type TokenResponse = components["schemas"]["TokenResponse"];
 export type ValidationError = components["schemas"]["ValidationError"];
 export type HTTPValidationError = components["schemas"]["HTTPValidationError"];
+
 const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
 
 export class ApiError extends Error {
