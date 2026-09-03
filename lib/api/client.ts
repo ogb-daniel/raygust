@@ -25,25 +25,22 @@ export class ApiError extends Error {
 
 export async function apiFetch<T>(
   path: string,
-  options: RequestInit & { token?: string | null },
+  options: RequestInit = {},
 ): Promise<T> {
-  const { token, headers: customHeaders, ...rest } = options;
+  const token = await getTokenCookie();
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
-    ...((customHeaders as Record<string, string>) ?? {}),
+    ...((options.headers as Record<string, string>) ?? {}),
   };
-
   if (token) {
     headers["Authorization"] = `Bearer ${token}`;
   }
-
   const response = await fetch(`${API_BASE}${path}`, {
-    ...rest,
+    ...options,
     headers,
   });
   if (!response.ok) {
     let detail: string | ValidationError[];
-
     try {
       const body = await response.json();
       detail = body.detail ?? response.statusText;
@@ -52,5 +49,5 @@ export async function apiFetch<T>(
     }
     throw new ApiError(response.status, detail);
   }
-  return response.json();
+  return response.json() as Promise<T>;
 }
