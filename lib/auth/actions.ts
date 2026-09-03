@@ -59,3 +59,35 @@ export async function registerAction(
     return { success: false, error: "Something went wrong. Please try again." };
   }
 }
+
+export async function loginAction(
+  _prevState: ActionResult,
+  formData: FormData,
+): Promise<ActionResult> {
+  const email = formData.get("email") as string;
+  const password = formData.get("password") as string;
+  if (!email || !password) {
+    return {
+      success: false,
+      error: "Email and password are required.",
+    };
+  }
+  try {
+    const tokenRes = await apiFetch<TokenResponse>("/api/v1/auth/login", {
+      method: "POST",
+      body: JSON.stringify({ email, password }),
+    });
+    await setTokenCookie(tokenRes.access_token);
+    return { success: true };
+  } catch (err) {
+    if (err instanceof ApiError) {
+      return { success: false, error: err.message };
+    }
+    return { success: false, error: "Something went wrong. Please try again." };
+  }
+}
+
+export async function logoutAction(): Promise<void> {
+  await removeTokenCookie();
+  redirect("/login");
+}
