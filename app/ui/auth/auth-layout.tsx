@@ -28,7 +28,7 @@ export default function AuthLayout({
 
   return (
     <div className="flex min-h-screen">
-      <aside className="hidden lg:flex lg:w-[320px] xl:w-[360px] flex-col justify-between bg-surface p-8 border-r border-border">
+      <aside className="hidden lg:flex lg:w-[320px] xl:w-90 flex-col justify-between bg-surface p-8 border-r border-border">
         <div>
           <div className="mb-10">
             <Logo />
@@ -61,7 +61,7 @@ export default function AuthLayout({
           </Link>
         </div>
         <div className="flex-1 flex items-center justify-center px-6 py-12">
-          <div className="w-full max-w-[440px]">{children}</div>
+          <div className="w-full max-w-110">{children}</div>
         </div>
         <div className="px-6 pb-8 flex justify-center">
           <div className="flex gap-2">
