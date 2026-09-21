@@ -1,7 +1,7 @@
 import React from "react";
 
 export const metadata = {
-  title: "Sign up - Raygust",
+  title: "Sign up | Raygust",
   description: "Create your Raygust account",
 };
 

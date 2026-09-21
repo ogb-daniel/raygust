@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Sign in — Raygust",
+  title: "Sign in | Raygust",
   description: "Sign in to your Raygust account",
 };
 
