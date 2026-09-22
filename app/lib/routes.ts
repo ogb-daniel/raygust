@@ -3,6 +3,7 @@ export type Route = {
   url: string;
   isAnchor?: boolean;
   step?: number;
+  external?: boolean;
 };
 
 export const navRoutes: Route[] = [
@@ -45,7 +46,7 @@ export const footerColumns = [
       { name: "Documentation", url: "/docs" },
       { name: "SDK Reference", url: "/docs/sdk" },
       { name: "API Status", url: "/api-status" },
-      { name: "GitHub", url: "/github" },
+      { name: "GitHub", url: "https://github.com/ogb-daniel", external: true },
     ],
   },
 ];

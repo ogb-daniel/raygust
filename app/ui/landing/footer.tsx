@@ -88,6 +88,7 @@ export default function Footer() {
                       <Link
                         href={link.url}
                         className="text-sm text-gray-600 no-underline hover:text-gray-900 transition-colors"
+                        target={link.external ? "_blank" : "_self"}
                         onClick={(e) => {
                           if (link.isAnchor && link.step !== undefined) {
                             e.preventDefault();
