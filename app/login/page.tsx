@@ -55,6 +55,14 @@ export default function LoginPage() {
             required
             autoComplete="current-password"
           />
+          <div className="flex justify-end mt-1.5">
+            <a
+              href="/forgot-password"
+              className="text-xs font-medium text-accent hover:opacity-80 transition-opacity"
+            >
+              Forgot password?
+            </a>
+          </div>
 
           {state.error && (
             <div className="text-sm text-danger bg-danger/10 px-4 py-3 rounded-(--radius-small)">
