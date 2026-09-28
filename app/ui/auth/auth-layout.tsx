@@ -27,8 +27,8 @@ export default function AuthLayout({
   const total = totalSteps ?? steps?.length ?? 1;
 
   return (
-    <div className="flex min-h-screen">
-      <aside className="hidden lg:flex lg:w-[320px] xl:w-90 flex-col justify-between bg-surface p-8 border-r border-border">
+    <div className="flex min-h-screen p-4">
+      <aside className="rounded-lg hidden lg:flex lg:w-[320px] xl:w-90 flex-col justify-between bg-surface p-8">
         <div>
           <div className="mb-10">
             <Logo />
@@ -38,7 +38,7 @@ export default function AuthLayout({
         <div className="flex items-center justify-between text-sm">
           <Link
             href="/"
-            className="text-muted hover:text-foreground transition-colors no-underline"
+            className="text-muted hover:text-foreground transition-colors no-underline flex items-center gap-2"
           >
             <MoveLeft /> Back to home
           </Link>
