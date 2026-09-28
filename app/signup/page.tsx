@@ -9,6 +9,8 @@ import SignupStepVerify from "@/app/ui/auth/signup-step-verify";
 import SignupStepInvite from "@/app/ui/auth/signup-step-invite";
 import SignupStepWelcome from "@/app/ui/auth/signup-step-welcome";
 import { registerAction } from "@/lib/auth/actions";
+import { useAuthStore } from "@/lib/stores/auth";
+
 const STEPS: StepConfig[] = [
   {
     icon: <User size={18} />,
@@ -34,6 +36,8 @@ const STEPS: StepConfig[] = [
 export default function SignupPage() {
   const [currentStep, setCurrentStep] = useState(0);
   const [email, setEmail] = useState("");
+  const setAuth = useAuthStore((s) => s.setAuth);
+
   const router = useRouter();
 
   const [state, formAction, isPending] = useActionState(registerAction, {
@@ -42,9 +46,12 @@ export default function SignupPage() {
 
   useEffect(() => {
     if (state.success && currentStep === 0) {
+      if (state.user) {
+        setAuth(state.user);
+      }
       setCurrentStep(1);
     }
-  }, [state.success, currentStep]);
+  }, [state.success, state.user, currentStep, setAuth]);
 
   const goToNext = () => {
     if (currentStep < STEPS.length - 1) {
