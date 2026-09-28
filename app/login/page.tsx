@@ -6,9 +6,11 @@ import AuthLayout from "@/app/ui/auth/auth-layout";
 import AuthInput from "@/app/ui/auth/auth-input";
 import OAuthButtons from "@/app/ui/auth/oauth-buttons";
 import { loginAction } from "@/lib/auth/actions";
+import { useAuthStore } from "@/lib/stores/auth";
 
 export default function LoginPage() {
   const router = useRouter();
+  const setAuth = useAuthStore((s) => s.setAuth);
 
   const [state, formAction, isPending] = useActionState(loginAction, {
     success: false,
@@ -16,9 +18,12 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (state.success) {
+      if (state.user) {
+        setAuth(state.user);
+      }
       router.push("/dashboard");
     }
-  }, [state.success, router]);
+  }, [state.success, state.user, setAuth, router]);
 
   return (
     <AuthLayout altAction={{ label: "Sign up", href: "/signup" }}>

@@ -78,7 +78,10 @@ export async function loginAction(
       body: JSON.stringify({ email, password }),
     });
     await setTokenCookie(tokenRes.access_token);
-    return { success: true };
+    const user = await apiFetch<UserResponse>("/api/v1/users/me", {
+      method: "GET",
+    });
+    return { success: true, user };
   } catch (err) {
     if (err instanceof ApiError) {
       return { success: false, error: err.message };
