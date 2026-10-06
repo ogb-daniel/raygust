@@ -1,29 +1,26 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { isMarkdownPreferred, rewritePath } from 'fumadocs-core/negotiation';
-import { docsContentRoute, docsRoute } from '@/lib/shared';
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import { TOKEN_KEY } from "./lib/auth/constants";
+const protectedRoutes = ["/dashboard"];
+const authRoutes = ["/login", "/signup"];
 
-const { rewrite: rewriteDocs } = rewritePath(
-  `${docsRoute}{/*path}`,
-  `${docsContentRoute}{/*path}/content.md`,
-);
-const { rewrite: rewriteSuffix } = rewritePath(
-  `${docsRoute}{/*path}.md`,
-  `${docsContentRoute}{/*path}/content.md`,
-);
-
-export default function proxy(request: NextRequest) {
-  const result = rewriteSuffix(request.nextUrl.pathname);
-  if (result) {
-    return NextResponse.rewrite(new URL(result, request.nextUrl));
+export function proxy(request: NextRequest) {
+  const token = request.cookies.get(TOKEN_KEY)?.value;
+  const { pathname } = request.nextUrl;
+  const isProtected = protectedRoutes.some((route) =>
+    pathname.startsWith(route),
+  );
+  const isAuthRoute = authRoutes.some((route) => pathname.startsWith(route));
+  if (isProtected && !token) {
+    const loginUrl = new URL("/login", request.url);
+    loginUrl.searchParams.set("callbackUrl", pathname);
+    return NextResponse.redirect(loginUrl);
   }
-
-  if (isMarkdownPreferred(request)) {
-    const result = rewriteDocs(request.nextUrl.pathname);
-
-    if (result) {
-      return NextResponse.rewrite(new URL(result, request.nextUrl));
-    }
+  if (isAuthRoute && token) {
+    return NextResponse.redirect(new URL("/dashboard", request.url));
   }
-
   return NextResponse.next();
 }
+export const config = {
+  matcher: ["/dashboard/:path*", "/login", "/signup"],
+};
