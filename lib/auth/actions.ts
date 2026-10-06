@@ -24,6 +24,7 @@ export async function registerAction(
   const raw = {
     email: formData.get("email") as string,
     password: formData.get("password") as string,
+    confirmPassword: formData.get("confirmPassword") as string,
   };
   const parsed = registerSchema.safeParse(raw);
   if (!parsed.success) {
