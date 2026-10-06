@@ -8,7 +8,7 @@ import { Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 
-function Navbar() {
+function Navbar({ isAuthenticated }: { isAuthenticated?: boolean }) {
   const ref = useRef<HTMLElement>(null);
   const [offScreen, setOffScreen] = useState<boolean>(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -86,21 +86,33 @@ function Navbar() {
 
       {/* Desktop auth buttons */}
       <div className="hidden lg:flex items-center space-x-4">
-        <Link href={actionRoutes.login}>
-          <Button
-            variant="ghost"
-            className="text-black rounded-xl hover:text-accent hover:bg-transparent"
-          >
-            Login
-          </Button>
-        </Link>
-        <Link href={actionRoutes.signup}>
-          <Button className="text-black transition-colors hover:text-white relative border rounded-xl shadow bg-white group overflow-hidden">
-            <p className=" z-10">Get Started</p>
-            <ArrowRight className=" z-10" />
-            <div className="absolute inset-0 bg-accent -translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
-          </Button>
-        </Link>
+        {isAuthenticated ? (
+          <Link href="/dashboard">
+            <Button className="text-black transition-colors hover:text-white relative border rounded-xl shadow bg-white group overflow-hidden">
+              <p className=" z-10">Go to Dashboard</p>
+              <ArrowRight className=" z-10" />
+              <div className="absolute inset-0 bg-accent -translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
+            </Button>
+          </Link>
+        ) : (
+          <>
+            <Link href={actionRoutes.login}>
+              <Button
+                variant="ghost"
+                className="text-black rounded-xl hover:text-accent hover:bg-transparent"
+              >
+                Login
+              </Button>
+            </Link>
+            <Link href={actionRoutes.signup}>
+              <Button className="text-black transition-colors hover:text-white relative border rounded-xl shadow bg-white group overflow-hidden">
+                <p className=" z-10">Get Started</p>
+                <ArrowRight className=" z-10" />
+                <div className="absolute inset-0 bg-accent -translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
+              </Button>
+            </Link>
+          </>
+        )}
       </div>
 
       {/* Mobile hamburger button */}
@@ -154,29 +166,45 @@ function Navbar() {
           ))}
         </ul>
         <div className="mt-4 pt-4 border-t border-gray-100 flex flex-col gap-3">
-          <Link
-            href={actionRoutes.login}
-            className="w-full"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            <Button
-              variant="ghost"
-              className="w-full text-black rounded-xl hover:text-accent hover:bg-transparent justify-center"
+          {isAuthenticated ? (
+            <Link
+              href="/dashboard"
+              className="w-full"
+              onClick={() => setMobileMenuOpen(false)}
             >
-              Login
-            </Button>
-          </Link>
-          <Link
-            href={actionRoutes.signup}
-            className="w-full"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            <Button className="w-full text-black transition-colors hover:text-white relative border rounded-xl shadow bg-white group overflow-hidden justify-center">
-              <p className="z-10">Get Started</p>
-              <ArrowRight className="z-10" />
-              <div className="absolute inset-0 bg-accent -translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
-            </Button>
-          </Link>
+              <Button className="w-full text-black transition-colors hover:text-white relative border rounded-xl shadow bg-white group overflow-hidden justify-center">
+                <p className="z-10">Go to Dashboard</p>
+                <ArrowRight className="z-10" />
+                <div className="absolute inset-0 bg-accent -translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
+              </Button>
+            </Link>
+          ) : (
+            <>
+              <Link
+                href={actionRoutes.login}
+                className="w-full"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <Button
+                  variant="ghost"
+                  className="w-full text-black rounded-xl hover:text-accent hover:bg-transparent justify-center"
+                >
+                  Login
+                </Button>
+              </Link>
+              <Link
+                href={actionRoutes.signup}
+                className="w-full"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <Button className="w-full text-black transition-colors hover:text-white relative border rounded-xl shadow bg-white group overflow-hidden justify-center">
+                  <p className="z-10">Get Started</p>
+                  <ArrowRight className="z-10" />
+                  <div className="absolute inset-0 bg-accent -translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
+                </Button>
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </nav>

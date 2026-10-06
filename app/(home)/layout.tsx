@@ -1,6 +1,10 @@
 import Navbar from "../ui/navbar";
+import { getTokenCookie } from "@/lib/auth/cookies";
 
-export default function Layout({ children }: LayoutProps<"/">) {
+export default async function Layout({ children }: LayoutProps<"/">) {
+  const token = await getTokenCookie();
+  const isAuthenticated = !!token;
+
   return (
     <main className="">
       <div className="absolute layout-bg left-2 right-2 md:left-5 md:right-5 rounded-b-3xl bottom-16 top-0 bg-linear-to-t from-accent to-60% to-white"></div>
@@ -9,7 +13,7 @@ export default function Layout({ children }: LayoutProps<"/">) {
       <div className="absolute layout-bg left-2 right-2 md:left-5 md:right-5 rounded-b-3xl bottom-16 top-0 bg-radial-[circle] from-white"></div>
       <div className="absolute layout-bg inset-0 bg-linear-to-b from-white "></div>
       <div className="relative z-10  ">
-        <Navbar />
+        <Navbar isAuthenticated={isAuthenticated} />
         <section className="">{children}</section>
       </div>
     </main>
