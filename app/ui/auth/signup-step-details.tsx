@@ -19,7 +19,10 @@ export default function SignupStepDetails({
   fieldErrors,
   onEmailCapture,
 }: SignupStepDetailsProps) {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
   return (
     <div>
       <div className="text-center mb-8">
@@ -45,6 +48,8 @@ export default function SignupStepDetails({
           required
           error={fieldErrors?.email}
           autoComplete="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <div>
           <AuthInput
@@ -60,6 +65,19 @@ export default function SignupStepDetails({
           />
           <PasswordStrength password={password} />
         </div>
+
+        <AuthInput
+          label="Confirm password"
+          name="confirmPassword"
+          type="password"
+          placeholder="Confirm your password"
+          required
+          error={fieldErrors?.confirmPassword}
+          autoComplete="new-password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+        />
+
         {error && (
           <div className="text-sm text-danger bg-danger/10 px-4 py-3 rounded-(--radius-small)">
             {error}
