@@ -1,8 +1,9 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AuthInput from "./auth-input";
 import PasswordStrength from "./password-strength";
 import OAuthButtons from "./oauth-buttons";
+import { registerSchema } from "@/lib/validation/auth";
 
 interface SignupStepDetailsProps {
   formAction: (formData: FormData) => void;
@@ -22,6 +23,36 @@ export default function SignupStepDetails({
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [localErrors, setLocalErrors] = useState<Record<string, string> | undefined>(fieldErrors);
+
+  // Sync with server errors on form submission
+  useEffect(() => {
+    setLocalErrors(fieldErrors);
+  }, [fieldErrors]);
+
+  // Real-time validation, but only active after the user has tried to submit at least once
+  const validateField = (newEmail: string, newPassword: string, newConfirm: string) => {
+    if (!fieldErrors) return; // don't show errors before first submit
+
+    const parsed = registerSchema.safeParse({
+      email: newEmail,
+      password: newPassword,
+      confirmPassword: newConfirm,
+    });
+
+    if (!parsed.success) {
+      const newErrors: Record<string, string> = {};
+      for (const issue of parsed.error.issues) {
+        const field = issue.path[0]?.toString() ?? "unknown";
+        if (!newErrors[field]) {
+          newErrors[field] = issue.message;
+        }
+      }
+      setLocalErrors(newErrors);
+    } else {
+      setLocalErrors({});
+    }
+  };
 
   return (
     <div>
@@ -46,10 +77,13 @@ export default function SignupStepDetails({
           type="email"
           placeholder="Enter your email"
           required
-          error={fieldErrors?.email}
+          error={localErrors?.email}
           autoComplete="email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => {
+            setEmail(e.target.value);
+            validateField(e.target.value, password, confirmPassword);
+          }}
         />
         <div>
           <AuthInput
@@ -58,10 +92,13 @@ export default function SignupStepDetails({
             type="password"
             placeholder="Choose a password"
             required
-            error={fieldErrors?.password}
+            error={localErrors?.password}
             autoComplete="new-password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              validateField(email, e.target.value, confirmPassword);
+            }}
           />
           <PasswordStrength password={password} />
         </div>
@@ -72,10 +109,13 @@ export default function SignupStepDetails({
           type="password"
           placeholder="Confirm your password"
           required
-          error={fieldErrors?.confirmPassword}
+          error={localErrors?.confirmPassword}
           autoComplete="new-password"
           value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
+          onChange={(e) => {
+            setConfirmPassword(e.target.value);
+            validateField(email, password, e.target.value);
+          }}
         />
 
         {error && (
