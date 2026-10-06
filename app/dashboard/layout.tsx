@@ -15,8 +15,7 @@ export default async function DashboardLayout({
       method: "GET",
     });
   } catch (error) {
-    await removeTokenCookie();
-    redirect("/login?callbackUrl=/dashboard");
+    redirect("/api/auth/logout");
   }
 
   return (
