@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState, useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import AuthLayout from "@/app/ui/auth/auth-layout";
 import AuthInput from "@/app/ui/auth/auth-input";
 import OAuthButtons from "@/app/ui/auth/oauth-buttons";
@@ -14,6 +14,7 @@ export default function LoginPage() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const searchParams = useSearchParams();
 
   const [state, formAction, isPending] = useActionState(loginAction, {
     success: false,
@@ -24,9 +25,10 @@ export default function LoginPage() {
       if (state.user) {
         setAuth(state.user);
       }
-      router.push("/dashboard");
+      const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
+      router.push(callbackUrl);
     }
-  }, [state.success, state.user, setAuth, router]);
+  }, [state.success, state.user, setAuth, router, searchParams]);
 
   return (
     <AuthLayout altAction={{ label: "Sign up", href: "/signup" }}>
