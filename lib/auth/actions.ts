@@ -8,6 +8,7 @@ import {
 } from "@/lib/api/client";
 import { setTokenCookie, removeTokenCookie } from "@/lib/auth/cookies";
 import { redirect } from "next/navigation";
+import { loginSchema, registerSchema } from "../validation/auth";
 
 type ActionResult = {
   success: boolean;
@@ -20,16 +21,22 @@ export async function registerAction(
   _prevState: ActionResult,
   formData: FormData,
 ): Promise<ActionResult> {
-  const email = formData.get("email") as string;
-  const password = formData.get("password") as string;
-
-  if (!email || !password) {
-    return {
-      success: false,
-      error: "Email and password are required.",
-    };
+  const raw = {
+    email: formData.get("email") as string,
+    password: formData.get("password") as string,
+  };
+  const parsed = registerSchema.safeParse(raw);
+  if (!parsed.success) {
+    const fieldErrors: Record<string, string> = {};
+    for (const issue of parsed.error.issues) {
+      const field = issue.path[0]?.toString() ?? "unknown";
+      if (!fieldErrors[field]) {
+        fieldErrors[field] = issue.message;
+      }
+    }
+    return { success: false, fieldErrors };
   }
-
+  const { email, password } = parsed.data;
   try {
     const user = await apiFetch<UserResponse>("/api/v1/auth/register", {
       method: "POST",
@@ -64,14 +71,22 @@ export async function loginAction(
   _prevState: ActionResult,
   formData: FormData,
 ): Promise<ActionResult> {
-  const email = formData.get("email") as string;
-  const password = formData.get("password") as string;
-  if (!email || !password) {
-    return {
-      success: false,
-      error: "Email and password are required.",
-    };
+  const raw = {
+    email: formData.get("email") as string,
+    password: formData.get("password") as string,
+  };
+  const parsed = loginSchema.safeParse(raw);
+  if (!parsed.success) {
+    const fieldErrors: Record<string, string> = {};
+    for (const issue of parsed.error.issues) {
+      const field = issue.path[0]?.toString() ?? "unknown";
+      if (!fieldErrors[field]) {
+        fieldErrors[field] = issue.message;
+      }
+    }
+    return { success: false, fieldErrors };
   }
+  const { email, password } = parsed.data;
   try {
     const tokenRes = await apiFetch<TokenResponse>("/api/v1/auth/login", {
       method: "POST",
