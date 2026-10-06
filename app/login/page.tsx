@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useEffect } from "react";
+import { useActionState, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import AuthLayout from "@/app/ui/auth/auth-layout";
 import AuthInput from "@/app/ui/auth/auth-input";
@@ -11,6 +11,9 @@ import { useAuthStore } from "@/lib/stores/auth";
 export default function LoginPage() {
   const router = useRouter();
   const setAuth = useAuthStore((s) => s.setAuth);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const [state, formAction, isPending] = useActionState(loginAction, {
     success: false,
@@ -45,23 +48,31 @@ export default function LoginPage() {
             placeholder="Enter your email"
             required
             autoComplete="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            error={state.fieldErrors?.email}
           />
 
-          <AuthInput
-            label="Password"
-            name="password"
-            type="password"
-            placeholder="Enter your password"
-            required
-            autoComplete="current-password"
-          />
-          <div className="flex justify-end mt-1.5">
-            <a
-              href="/forgot-password"
-              className="text-xs font-medium text-accent hover:opacity-80 transition-opacity"
-            >
-              Forgot password?
-            </a>
+          <div>
+            <AuthInput
+              label="Password"
+              name="password"
+              type="password"
+              placeholder="Enter your password"
+              required
+              autoComplete="current-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              error={state.fieldErrors?.password}
+            />
+            <div className="flex justify-end mt-1.5">
+              <a
+                href="/forgot-password"
+                className="text-xs font-medium text-accent hover:opacity-80 transition-opacity"
+              >
+                Forgot password?
+              </a>
+            </div>
           </div>
 
           {state.error && (
