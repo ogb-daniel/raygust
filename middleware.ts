@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-const TOKEN_KEY = "raygust-token";
+import { TOKEN_KEY } from "./lib/auth/constants";
 const protectedRoutes = ["/dashboard"];
 const authRoutes = ["/login", "/signup"];
 

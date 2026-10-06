@@ -1,7 +1,5 @@
 import { cookies } from "next/headers";
-
-const TOKEN_KEY = "raygust-token";
-const MAX_AGE_SECONDS = 7 * 24 * 60 * 60; // 7 days
+import { TOKEN_KEY, TOKEN_MAX_AGE_SECONDS } from "./constants";
 
 export async function setTokenCookie(token: string): Promise<void> {
   const cookieStore = await cookies();
@@ -10,7 +8,7 @@ export async function setTokenCookie(token: string): Promise<void> {
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
     path: "/",
-    maxAge: MAX_AGE_SECONDS,
+    maxAge: TOKEN_MAX_AGE_SECONDS,
   });
 }
 export async function getTokenCookie(): Promise<string | null> {
