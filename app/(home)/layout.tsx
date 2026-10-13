@@ -1,6 +1,9 @@
 import Navbar from "../ui/navbar";
 import { getTokenCookie } from "@/lib/auth/cookies";
-
+export const metadata = {
+  title: "Raygust",
+  description: "",
+};
 export default async function Layout({ children }: LayoutProps<"/">) {
   const token = await getTokenCookie();
   const isAuthenticated = !!token;
