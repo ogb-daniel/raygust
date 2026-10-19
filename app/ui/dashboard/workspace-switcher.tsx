@@ -63,7 +63,6 @@ export default function WorkspaceSwitcher({
     }
   }, [user]);
 
-  // Click outside and Escape key handler
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
@@ -90,7 +89,6 @@ export default function WorkspaceSwitcher({
     };
   }, [isOpen]);
 
-  // Raygust application-specific actions
   const menuActions = [
     {
       id: "account",
