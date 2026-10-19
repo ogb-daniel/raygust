@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
+import Sidebar from "@/app/ui/dashboard/sidebar";
 import { apiFetch, type UserResponse } from "@/lib/api/client";
 import AuthHydrator from "@/app/ui/auth/auth-hydrator";
-import { removeTokenCookie } from "@/lib/auth/cookies";
 
 export default async function DashboardLayout({
   children,
@@ -22,7 +22,8 @@ export default async function DashboardLayout({
     <>
       <AuthHydrator user={user} />
 
-      <div className="flex h-screen bg-surface">
+      <div className="flex h-screen bg-[#F8F9FA] overflow-hidden">
+        <Sidebar user={user} />
         <main className="flex-1 overflow-y-auto p-8">{children}</main>
       </div>
     </>
