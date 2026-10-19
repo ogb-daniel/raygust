@@ -47,33 +47,37 @@ export default function WorkspaceSwitcher({
 }: WorkspaceSwitcherProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Compute active workspace using real user data if present
   const initialWorkspace: WorkspaceItem = currentWorkspace ?? {
     id: user?.id ?? DEFAULT_WORKSPACES[0].id,
     name: user?.email
-      ? `${user.email.split("@")[0].replace(/[\._-]/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())} Group Inc`
+      ? `${user.email
+          .split("@")[0]
+          .replace(/[\._-]/g, " ")
+          .replace(/\b\w/g, (c) => c.toUpperCase())} Group Inc`
       : DEFAULT_WORKSPACES[0].name,
     email: user?.email ?? DEFAULT_WORKSPACES[0].email,
     avatarColor: "#0f0f11",
   };
 
-  const [selectedWorkspace, setSelectedWorkspace] = useState<WorkspaceItem>(initialWorkspace);
+  const [selectedWorkspace, setSelectedWorkspace] =
+    useState<WorkspaceItem>(initialWorkspace);
   const [activeItem, setActiveItem] = useState<string>("account");
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Synchronize when real user arrives
   useEffect(() => {
     if (user?.email) {
       setSelectedWorkspace({
         id: user.id,
-        name: `${user.email.split("@")[0].replace(/[\._-]/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())} Group Inc`,
+        name: `${user.email
+          .split("@")[0]
+          .replace(/[\._-]/g, " ")
+          .replace(/\b\w/g, (c) => c.toUpperCase())} Group Inc`,
         email: user.email,
         avatarColor: "#0f0f11",
       });
     }
   }, [user]);
 
-  // Close when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
@@ -125,7 +129,6 @@ export default function WorkspaceSwitcher({
 
   return (
     <div className="relative w-full select-none" ref={containerRef}>
-      {/* Workspace Switcher Trigger Button */}
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
@@ -134,9 +137,7 @@ export default function WorkspaceSwitcher({
         className="group flex w-full items-center justify-between gap-3 rounded-2xl border border-zinc-200/80 bg-white p-2.5 text-left shadow-xs transition-all duration-150 hover:border-zinc-300 hover:shadow-sm active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40"
       >
         <div className="flex items-center gap-3 min-w-0">
-          {/* Avatar badge matching design */}
           <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-zinc-950 text-white shadow-xs overflow-hidden">
-            {/* Mascot / lion stylized emblem */}
             <svg
               className="h-5 w-5 text-amber-500 transition-transform duration-200 group-hover:scale-105"
               viewBox="0 0 24 24"
@@ -146,7 +147,6 @@ export default function WorkspaceSwitcher({
             </svg>
           </div>
 
-          {/* Org details */}
           <div className="min-w-0 flex-1">
             <p className="truncate text-sm font-semibold tracking-tight text-zinc-900 leading-tight">
               {selectedWorkspace.name}
@@ -157,7 +157,6 @@ export default function WorkspaceSwitcher({
           </div>
         </div>
 
-        {/* Dual Chevron */}
         <ChevronsUpDown
           className={`h-4 w-4 shrink-0 text-zinc-400 transition-transform duration-200 ${
             isOpen ? "text-zinc-700 rotate-180" : "group-hover:text-zinc-600"
@@ -165,7 +164,6 @@ export default function WorkspaceSwitcher({
         />
       </button>
 
-      {/* Floating Popover Menu matching Screenshot 1 & 4 */}
       {isOpen && (
         <div
           role="menu"
