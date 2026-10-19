@@ -1,18 +1,17 @@
 "use client";
 
 import WorkspaceSwitcher from "./workspace-switcher";
+import SidebarSearch from "./sidebar-search";
 import type { UserResponse } from "@/lib/api/client";
 
 export default function Sidebar({ user }: { user?: UserResponse }) {
   return (
     <aside className="w-64 shrink-0 h-screen p-4 flex flex-col justify-between">
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-3">
         <WorkspaceSwitcher user={user} />
+        <SidebarSearch />
 
-        <div className="space-y-3 pt-2">
-          <div className="h-10 rounded-xl bg-zinc-200/50 border border-dashed border-zinc-300 flex items-center px-3 text-xs text-zinc-400">
-            Search bar (upcoming)
-          </div>
+        <div className="space-y-3 pt-1">
 
           <div className="space-y-1.5 pt-1">
             <div className="h-9 rounded-xl bg-accent/10 border border-accent/20 flex items-center px-3 text-xs font-medium text-accent">
