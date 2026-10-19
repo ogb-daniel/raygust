@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { Button, Separator } from "@heroui/react";
 import {
   User,
   Key,
@@ -134,12 +135,12 @@ export default function WorkspaceSwitcher({
 
   return (
     <div className="relative w-full select-none" ref={containerRef}>
-      <button
-        type="button"
-        onClick={() => setIsOpen((prev) => !prev)}
+      <Button
+        variant="ghost"
+        onPress={() => setIsOpen((prev) => !prev)}
         aria-expanded={isOpen}
         aria-haspopup="true"
-        className="cursor-pointer group flex w-full items-center justify-between gap-3 rounded-2xl border border-zinc-200/80 bg-white p-2.5 text-left shadow-xs transition-all duration-150 hover:border-zinc-300 hover:shadow-sm active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40"
+        className="cursor-pointer group flex w-full h-auto items-center justify-between gap-3 rounded-2xl border border-zinc-200/80 bg-white p-2.5 text-left shadow-xs transition-all duration-150 hover:border-zinc-300 hover:shadow-sm active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40"
       >
         <div className="flex items-center gap-3 min-w-0">
           <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-zinc-950 text-white shadow-xs overflow-hidden">
@@ -164,7 +165,7 @@ export default function WorkspaceSwitcher({
             isOpen ? "text-zinc-700 rotate-180" : "group-hover:text-zinc-600"
           }`}
         />
-      </button>
+      </Button>
 
       {isOpen && (
         <div
@@ -177,13 +178,12 @@ export default function WorkspaceSwitcher({
               const isActive = activeItem === action.id;
 
               return (
-                <button
+                <Button
                   key={action.id}
-                  type="button"
-                  role="menuitem"
+                  variant="ghost"
                   onMouseEnter={() => setActiveItem(action.id)}
-                  onClick={() => handleActionClick(action)}
-                  className={`group cursor-pointer flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-sm transition-all duration-150 text-left ${
+                  onPress={() => handleActionClick(action)}
+                  className={`group cursor-pointer flex w-full h-auto items-center justify-between rounded-xl px-3 py-2.5 text-sm transition-all duration-150 text-left border-0 ${
                     isActive
                       ? "bg-accent/10 text-accent font-medium shadow-2xs"
                       : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900 font-normal"
@@ -203,21 +203,20 @@ export default function WorkspaceSwitcher({
                   {action.external && (
                     <ExternalLink className="h-3.5 w-3.5 text-zinc-400 opacity-60" />
                   )}
-                </button>
+                </Button>
               );
             })}
 
-            <div className="my-1 border-t border-zinc-100" />
+            <Separator className="my-1 border-t border-zinc-100" />
 
-            <button
-              type="button"
-              role="menuitem"
-              onClick={handleLogout}
-              className="group cursor-pointer flex w-full items-center gap-3 rounded-xl px-3 py-2 text-sm text-zinc-600 hover:bg-red-50/70 hover:text-red-600 transition-all duration-150 text-left font-normal"
+            <Button
+              variant="ghost"
+              onPress={handleLogout}
+              className="group cursor-pointer flex w-full h-auto items-center gap-3 justify-start rounded-xl px-3 py-2 text-sm text-zinc-600 hover:bg-red-50/70 hover:text-red-600 transition-all duration-150 text-left font-normal border-0"
             >
               <LogOut className="h-4 w-4 shrink-0 text-zinc-400 group-hover:text-red-500 transition-colors duration-150" />
               <span>Sign out</span>
-            </button>
+            </Button>
           </div>
         </div>
       )}

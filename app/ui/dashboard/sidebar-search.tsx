@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { Button, Kbd } from "@heroui/react";
 import { Search, X } from "lucide-react";
 
 interface SidebarSearchProps {
@@ -84,25 +85,24 @@ export default function SidebarSearch({
 
       <div className="flex items-center shrink-0">
         {query ? (
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              handleClear();
-            }}
-            className="cursor-pointer rounded-md p-0.5 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-600 transition-colors"
-            title="Clear search"
+          <Button
+            isIconOnly
+            size="sm"
+            variant="ghost"
+            onPress={handleClear}
+            className="cursor-pointer h-6 w-6 min-w-6 p-0 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-600 transition-colors rounded-md"
+            aria-label="Clear search"
           >
             <X className="h-3.5 w-3.5" />
-          </button>
+          </Button>
         ) : (
-          <kbd
+          <Kbd
             className={`pointer-events-none inline-flex h-5 w-5 select-none items-center justify-center rounded-md border border-zinc-200/70 bg-zinc-100/70 text-[11px] font-medium text-zinc-400 transition-opacity duration-150 ${
               isFocused ? "opacity-30" : "opacity-100"
             }`}
           >
             /
-          </kbd>
+          </Kbd>
         )}
       </div>
     </div>
