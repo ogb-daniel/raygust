@@ -1,7 +1,17 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import Sidebar from "@/app/ui/dashboard/sidebar";
 import { apiFetch, type UserResponse } from "@/lib/api/client";
 import AuthHydrator from "@/app/ui/auth/auth-hydrator";
+
+export const metadata: Metadata = {
+  title: {
+    template: "%s | Raygust",
+    default: "Dashboard | Raygust",
+  },
+  description:
+    "Manage your documents, RAG conversations, API keys, and platform usage in Raygust.",
+};
 
 export default async function DashboardLayout({
   children,
