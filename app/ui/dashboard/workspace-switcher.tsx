@@ -139,7 +139,7 @@ export default function WorkspaceSwitcher({
         onClick={() => setIsOpen((prev) => !prev)}
         aria-expanded={isOpen}
         aria-haspopup="true"
-        className="group flex w-full items-center justify-between gap-3 rounded-2xl border border-zinc-200/80 bg-white p-2.5 text-left shadow-xs transition-all duration-150 hover:border-zinc-300 hover:shadow-sm active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40"
+        className="cursor-pointer group flex w-full items-center justify-between gap-3 rounded-2xl border border-zinc-200/80 bg-white p-2.5 text-left shadow-xs transition-all duration-150 hover:border-zinc-300 hover:shadow-sm active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40"
       >
         <div className="flex items-center gap-3 min-w-0">
           <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-zinc-950 text-white shadow-xs overflow-hidden">
@@ -183,7 +183,7 @@ export default function WorkspaceSwitcher({
                   role="menuitem"
                   onMouseEnter={() => setActiveItem(action.id)}
                   onClick={() => handleActionClick(action)}
-                  className={`group flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-sm transition-all duration-150 text-left ${
+                  className={`group cursor-pointer flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-sm transition-all duration-150 text-left ${
                     isActive
                       ? "bg-accent/10 text-accent font-medium shadow-2xs"
                       : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900 font-normal"
@@ -213,7 +213,7 @@ export default function WorkspaceSwitcher({
               type="button"
               role="menuitem"
               onClick={handleLogout}
-              className="group flex w-full items-center gap-3 rounded-xl px-3 py-2 text-sm text-zinc-600 hover:bg-red-50/70 hover:text-red-600 transition-all duration-150 text-left font-normal"
+              className="group cursor-pointer flex w-full items-center gap-3 rounded-xl px-3 py-2 text-sm text-zinc-600 hover:bg-red-50/70 hover:text-red-600 transition-all duration-150 text-left font-normal"
             >
               <LogOut className="h-4 w-4 shrink-0 text-zinc-400 group-hover:text-red-500 transition-colors duration-150" />
               <span>Sign out</span>
